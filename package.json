@@ -19,6 +19,7 @@
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@types/node": "^24.6.0",
+    "@unocss/preset-web-fonts": "^66.5.3",
     "@unocss/preset-wind4": "^66.5.3",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.8.1",
