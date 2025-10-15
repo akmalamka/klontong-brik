@@ -31,12 +31,14 @@ const ITEMS_PER_PAGE = 3
         </span>
         <div class="flex gap-4 flex-wrap">
           <CoreButton class="bg-info color-white flex-1">
+            <i class="i-lucide:edit" />
             Edit
           </CoreButton>
           <CoreButton class="bg-error color-white flex-1">
+            <i class="i-lucide:trash-2" />
             Delete
           </CoreButton>
-          <CoreButton class="grow-2">
+          <CoreButton class="grow-2" :to="`/manage/${product.id}`">
             View Details
           </CoreButton>
         </div>

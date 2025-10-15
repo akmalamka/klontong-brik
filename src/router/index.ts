@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useCurrentUser } from 'vuefire'
 import HomeView from '@/views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue'
+import ManageProductView from '@/views/ManageProductView.vue'
 import ManageView from '@/views/ManageView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 
@@ -20,7 +21,7 @@ const routes = [
   },
   {
     path: '/manage/:productId',
-    component: ManageView,
+    component: ManageProductView,
     meta: {
       requiresAuth: true,
     },
