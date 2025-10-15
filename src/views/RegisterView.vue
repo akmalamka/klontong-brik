@@ -1,10 +1,16 @@
 <script setup lang="ts">
+import { FirebaseError } from 'firebase/app'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { useField, useForm } from 'vee-validate'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import * as yup from 'yup'
 import CoreButton from '@/core/CoreButton.vue'
 import CoreInputField from '@/core/CoreInputField.vue'
+import { auth } from '@/firebase'
 import AuthView from './AuthView.vue'
 
+const router = useRouter()
 const schema = yup.object({
   email: yup
     .string()
@@ -24,10 +30,23 @@ const { handleSubmit, errors, isSubmitting } = useForm({
 const { value: email } = useField<string>('email')
 const { value: password } = useField<string>('password')
 const { value: confirmPassword } = useField<string>('confirmPassword')
+const error = ref('')
 
-// TODO: handle submit logic
-const onSubmit = handleSubmit(async () => {
-  // console.log('Form submitted:', values)
+const onSubmit = handleSubmit(async ({ email, password }) => {
+  try {
+    await createUserWithEmailAndPassword(auth, email, password)
+
+    // redirect after success
+    router.push('/')
+  }
+  catch (err: any) {
+    if (err instanceof FirebaseError && err.code === 'auth/email-already-in-use') {
+      error.value = 'Unfortunately, creating your account failed. An account already exists with this email address.'
+    }
+    else {
+      error.value = 'Something went wrong, please try again.'
+    }
+  }
 })
 </script>
 

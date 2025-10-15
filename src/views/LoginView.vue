@@ -1,9 +1,15 @@
 <script setup lang="ts">
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useField, useForm } from 'vee-validate'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import * as yup from 'yup'
 import CoreButton from '@/core/CoreButton.vue'
 import CoreInputField from '@/core/CoreInputField.vue'
+import { auth } from '@/firebase'
 import AuthView from './AuthView.vue'
+
+const router = useRouter()
 
 const schema = yup.object({
   email: yup
@@ -19,10 +25,23 @@ const { handleSubmit, errors, isSubmitting } = useForm({
 
 const { value: email } = useField<string>('email')
 const { value: password } = useField<string>('password')
+const error = ref('')
 
-// TODO: handle submit logic
-const onSubmit = handleSubmit(async () => {
-  // console.log('Form submitted:', values)
+const onSubmit = handleSubmit(async ({ email, password }) => {
+  try {
+    await signInWithEmailAndPassword(auth, email, password)
+
+    // redirect after success
+    router.push('/')
+  }
+  catch (err: any) {
+    if (err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found' || err.code === 'auth/invalid-login-credentials' || err.code === 'auth/invalid-credential') {
+      error.value = 'E-mail address or password is incorrect'
+    }
+    else {
+      error.value = 'Something went wrong, please try again.'
+    }
+  }
 })
 </script>
 
@@ -58,6 +77,9 @@ const onSubmit = handleSubmit(async () => {
           {{ errors.password }}
         </p>
       </div>
+      <p v-if="error" class="text-error body-text mt-1">
+        {{ error }}
+      </p>
       <!-- TODO: update button styling for submit -->
       <CoreButton
         type="submit"
