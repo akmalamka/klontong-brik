@@ -1,9 +1,13 @@
 import presetWebFonts from '@unocss/preset-web-fonts'
-import presetWind4 from '@unocss/preset-wind4'
+import presetWind3 from '@unocss/preset-wind3'
 import { defineConfig } from 'unocss'
 
 export default defineConfig({
   theme: {
+    container: {
+      center: true,
+      padding: '1rem',
+    },
     colors: {
       primary: {
         DEFAULT: '#D03A2B',
@@ -35,8 +39,23 @@ export default defineConfig({
     ['btn-primary', 'px-4 py-2 rounded-lg bg-primary text-white hover:bg-[#b92d20] transition'],
     ['btn-secondary', 'px-4 py-2 rounded-lg border border-gray-100 text-gray-700 bg-cream hover:bg-gray-100 transition'],
   ],
+  preflights: [
+    {
+      getCSS: ({ theme }) => `
+        :root {
+          --navbar-height: 80px;
+        }
+
+        @media (min-width: ${theme.breakpoints.md}) {
+          :root {
+            --navbar-height: 96px;
+          }
+        }
+      `,
+    },
+  ],
   presets: [
-    presetWind4(),
+    presetWind3(),
     presetWebFonts({
       provider: 'fontshare',
       fonts: {

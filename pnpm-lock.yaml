@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@unocss/reset':
+        specifier: ^66.5.3
+        version: 66.5.3
       vue:
         specifier: ^3.5.22
         version: 3.5.22(typescript@5.9.3)
@@ -30,7 +33,7 @@ importers:
       '@unocss/preset-web-fonts':
         specifier: ^66.5.3
         version: 66.5.3
-      '@unocss/preset-wind4':
+      '@unocss/preset-wind3':
         specifier: ^66.5.3
         version: 66.5.3
       '@vitejs/plugin-vue':
