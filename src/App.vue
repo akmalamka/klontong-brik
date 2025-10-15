@@ -12,7 +12,7 @@
       </RouterLink>
     </div>
   </nav>
-  <main class="pt-$navbar-height min-h-[calc(100dvh-var(--navbar-height))]">
+  <main class="mt-$navbar-height h-[calc(100dvh-var(--navbar-height))]">
     <RouterView />
   </main>
 </template>

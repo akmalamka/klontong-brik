@@ -1,0 +1,15 @@
+:root {
+  --navbar-height: 70px;
+
+  @screen md {
+    --navbar-height: 86px;
+  }
+}
+
+html {
+  @apply h-full bg-base;
+
+  scroll-behavior: smooth;
+
+  scroll-padding-top: calc(var(--navbar-height) + 32px);
+}

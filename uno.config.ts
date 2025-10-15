@@ -1,6 +1,4 @@
-import presetWebFonts from '@unocss/preset-web-fonts'
-import presetWind3 from '@unocss/preset-wind3'
-import { defineConfig } from 'unocss'
+import { defineConfig, presetWebFonts, presetWind3, transformerDirectives, transformerVariantGroup } from 'unocss'
 
 export default defineConfig({
   theme: {
@@ -16,7 +14,7 @@ export default defineConfig({
       info: '#2757A5',
       error: '#991B1B',
       success: '#10B981',
-      cream: '#F8F4E9',
+      base: '#F8F4E9',
       white: '#FFFFFF',
       black: '#000000',
       gray: '#6B7280',
@@ -39,21 +37,6 @@ export default defineConfig({
     ['btn-primary', 'px-4 py-2 rounded-lg bg-primary text-white hover:bg-[#b92d20] transition'],
     ['btn-secondary', 'px-4 py-2 rounded-lg border border-gray-100 text-gray-700 bg-cream hover:bg-gray-100 transition'],
   ],
-  preflights: [
-    {
-      getCSS: ({ theme }) => `
-        :root {
-          --navbar-height: 80px;
-        }
-
-        @media (min-width: ${theme.breakpoints.md}) {
-          :root {
-            --navbar-height: 96px;
-          }
-        }
-      `,
-    },
-  ],
   presets: [
     presetWind3(),
     presetWebFonts({
@@ -63,5 +46,9 @@ export default defineConfig({
         clashGrotesk: 'Clash Grotesk',
       },
     }),
+  ],
+  transformers: [
+    transformerDirectives(),
+    transformerVariantGroup(),
   ],
 })
