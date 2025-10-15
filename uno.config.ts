@@ -21,18 +21,18 @@ export default defineConfig({
     },
   },
   shortcuts: [
-    ['h1', 'font-clashDisplay text-[60px] leading-[1.1] tracking-[-0.02em] font-500'],
-    ['h2', 'font-clashDisplay text-[48px] leading-[1.15] tracking-[-0.015em] font-600'],
-    ['h3', 'font-clashDisplay text-[28px] leading-[1.2] tracking-[-0.01em] font-500'],
-    ['h4', 'font-clashGrotesk text-[20px] leading-[1.3] font-500'],
-    ['h5', 'font-clashGrotesk text-[16px] leading-[1.3] font-500'],
+    ['h1', 'font-display text-[60px] leading-[1.1] tracking-[-0.02em] font-500'],
+    ['h2', 'font-display text-[48px] leading-[1.15] tracking-[-0.015em] font-600'],
+    ['h3', 'font-display text-[28px] leading-[1.2] tracking-[-0.01em] font-500'],
+    ['h4', 'font-sans text-[20px] leading-[1.3] font-500'],
+    ['h5', 'font-sans text-[16px] leading-[1.3] font-500'],
 
-    ['body-text', 'font-clashGrotesk text-[16px] leading-[1.5] font-500'],
-    ['body-text-small', 'font-clashGrotesk text-[16px] leading-[1.5]'],
-    ['caption', 'font-clashGrotesk text-[12px] leading-[1.4] uppercase tracking-[0.025em]'],
+    ['body-text', 'font-sans text-[16px] leading-[1.5] font-500'],
+    ['body-text-small', 'font-sans text-[16px] leading-[1.5]'],
+    ['caption', 'font-sans text-[12px] leading-[1.4] uppercase tracking-[0.025em]'],
 
-    ['btn-text', 'font-clashGrotesk text-[16px] leading-[1.2] tracking-[1em] font-600'],
-    ['btn-text-small', 'font-clashGrotesk text-[14px] leading-[1.2] tracking[-0.05em] font-500'],
+    ['btn-text', 'font-sans text-[16px] leading-[1.2] tracking-[0.01em] font-600'],
+    ['btn-text-small', 'font-sans text-[14px] leading-[1.2] tracking[-0.05em] font-500'],
 
     ['btn-primary', 'px-4 py-2 rounded-lg bg-primary text-white hover:bg-[#b92d20] transition'],
     ['btn-secondary', 'px-4 py-2 rounded-lg border border-gray-100 text-gray-700 bg-cream hover:bg-gray-100 transition'],
@@ -42,8 +42,8 @@ export default defineConfig({
     presetWebFonts({
       provider: 'fontshare',
       fonts: {
-        clashDisplay: 'Clash Display',
-        clashGrotesk: 'Clash Grotesk',
+        display: 'Clash Display',
+        sans: 'Clash Grotesk',
       },
     }),
   ],
