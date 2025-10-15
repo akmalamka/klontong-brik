@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import CoreButton from '../core/CoreButton.vue'
+import CoreButton from '@/core/CoreButton.vue'
 </script>
 
 <template>

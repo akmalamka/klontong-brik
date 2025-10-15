@@ -18,7 +18,7 @@ withDefaults(defineProps<CoreButtonProps>(), {
     :is="to ? RouterLink : 'button'"
     :to="to"
     :target="to?.startsWith('/') ? undefined : '_blank'"
-    class="core-button flex items-center gap-2 rounded-full text-center outline-none"
+    class="core-button flex items-center justify-center gap-2 rounded-full text-center outline-none"
     :class="[
       `core-button--${variant}`]"
     :tabindex="disabled ? -1 : 0"

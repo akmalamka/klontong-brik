@@ -27,11 +27,11 @@ export default defineConfig({
     ['h4', 'font-clashGrotesk text-[20px] leading-[1.3] font-500'],
     ['h5', 'font-clashGrotesk text-[16px] leading-[1.3] font-500'],
 
-    ['body-text', 'font-clashGrotesk text-[16px] leading-[1.5]'],
+    ['body-text', 'font-clashGrotesk text-[16px] leading-[1.5] font-500'],
     ['body-text-small', 'font-clashGrotesk text-[16px] leading-[1.5]'],
     ['caption', 'font-clashGrotesk text-[12px] leading-[1.4] uppercase tracking-[0.025em]'],
 
-    ['btn-text', 'font-clashGrotesk text-[16px] leading-[1.2] font-600'],
+    ['btn-text', 'font-clashGrotesk text-[16px] leading-[1.2] tracking-[1em] font-600'],
     ['btn-text-small', 'font-clashGrotesk text-[14px] leading-[1.2] tracking[-0.05em] font-500'],
 
     ['btn-primary', 'px-4 py-2 rounded-lg bg-primary text-white hover:bg-[#b92d20] transition'],
