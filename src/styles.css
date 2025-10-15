@@ -13,3 +13,12 @@ html {
 
   scroll-padding-top: calc(var(--navbar-height) + 32px);
 }
+
+.background-radial-blur {
+  @apply absolute top-1/2 left-1/2
+  w-[90%] h-[90%]
+  -translate-x-1/2 -translate-y-1/2
+  pointer-events-none -z-1
+  blur-[205px]
+  bg-[radial-gradient(circle,#d03a2b_0%,#fa9b8c_78%,#f8f4e9_100%)];
+}

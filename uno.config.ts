@@ -21,7 +21,7 @@ export default defineConfig({
     },
   },
   shortcuts: [
-    ['h1', 'font-clashDisplay text-[60px] leading-[1.1] tracking-[-0.02em] font-600'],
+    ['h1', 'font-clashDisplay text-[60px] leading-[1.1] tracking-[-0.02em] font-500'],
     ['h2', 'font-clashDisplay text-[48px] leading-[1.15] tracking-[-0.015em] font-600'],
     ['h3', 'font-clashDisplay text-[28px] leading-[1.2] tracking-[-0.01em] font-500'],
     ['h4', 'font-clashGrotesk text-[20px] leading-[1.3] font-500'],
