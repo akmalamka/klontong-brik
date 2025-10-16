@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import productsData from '@/assets/dummyProducts.json'
 
-export interface Product {
+interface Product {
   id: number
   categoryId: number
   categoryName: string

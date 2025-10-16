@@ -1,18 +1,21 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import productsData from '@/assets/dummyProducts.json'
 import CoreButton from '@/core/CoreButton.vue'
+import { useProductsStore } from '@/stores/products'
 
 const route = useRoute()
 const router = useRouter()
+const { getProductById } = useProductsStore()
 const productId = computed(() => {
   const idString = route.params.productId
   return idString ? Number(idString) : null
 })
 
 const productDetail = computed(() => {
-  return productsData.find(product => product.id === productId.value)
+  if (productId.value === null)
+    return null
+  return getProductById(productId.value)
 })
 
 if (!productDetail.value) {
