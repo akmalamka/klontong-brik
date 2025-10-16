@@ -3,20 +3,32 @@ import { computed, ref } from 'vue'
 import productsData from '@/assets/dummyProducts.json'
 import CoreButton from '@/core/CoreButton.vue'
 import CorePagination from '@/core/CorePagination.vue'
+import CoreSearchBar from '@/core/CoreSearchBar.vue'
 
 const products = ref(productsData)
 const currentPage = ref(1)
+
+const searchQuery = ref('')
 // TODO: update ITEMS_PER_PAGE
 const ITEMS_PER_PAGE = 3
+const productListRef = ref<HTMLElement>()
+
+const filteredProducts = computed(() => {
+  const filtered = products.value.filter(
+    (product) => {
+      const hasText = product.name?.toLowerCase().includes(searchQuery.value.toLowerCase())
+      return hasText
+    },
+  ) ?? []
+  return filtered
+})
 
 const displayedProducts = computed(() => {
-  return products.value.slice(
+  return filteredProducts.value.slice(
     (currentPage.value - 1) * ITEMS_PER_PAGE,
     currentPage.value * ITEMS_PER_PAGE,
   )
 })
-
-const productListRef = ref<HTMLElement>()
 </script>
 
 <template>
@@ -24,9 +36,11 @@ const productListRef = ref<HTMLElement>()
     <h1 class="h1">
       Manage Products
     </h1>
-    <div>
-      Searchbar
-    </div>
+    <CoreSearchBar
+      v-model="searchQuery"
+      :debounce-time="400"
+      placeholder="Type to search..."
+    />
     <div class="grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       <div v-for="product in displayedProducts" :key="product.id" class="flex flex-col gap-4">
         <img :src="product.image" alt="Product Image" class="w-full h-auto rounded-4">
