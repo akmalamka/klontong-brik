@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import productsData from '@/assets/dummyProducts.json'
 
-interface Product {
+export interface Product {
   id: number
   categoryId: number
   categoryName: string
@@ -16,6 +16,8 @@ interface Product {
   height?: number
   price: number
 }
+
+export type ProductSummary = Pick<Product, 'id' | 'categoryName' | 'name' | 'price'>
 
 export const useProductsStore = defineStore('products', () => {
   const products = ref<Product[]>(productsData)

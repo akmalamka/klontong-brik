@@ -12,6 +12,7 @@
     "firebase:emulators": "firebase emulators:start --import firebase-export-metadata.json --export-on-exit"
   },
   "dependencies": {
+    "@tanstack/vue-table": "^8.21.3",
     "@unocss/reset": "^66.5.3",
     "@vueuse/core": "^13.9.0",
     "firebase": "^12.4.0",

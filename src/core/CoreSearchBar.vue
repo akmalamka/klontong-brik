@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { onBeforeUnmount, ref, watch } from 'vue'
-import CoreButton from './CoreButton.vue'
 
 interface CoreSearchBarProps {
   modelValue: string
@@ -38,12 +37,6 @@ function handleInput() {
   }, props.debounceTime)
 }
 
-function handleClear() {
-  searchTerm.value = ''
-  clearDebounce()
-  emit('update:modelValue', '')
-}
-
 /** Watch the external modelValue prop to update the internal searchTerm */
 watch(
   () => props.modelValue,
@@ -71,14 +64,6 @@ onBeforeUnmount(() => {
       class="core-search-bar__input flex-grow p-1 border-none outline-none text-black bg-transparent"
       @input="handleInput"
     >
-
-    <CoreButton
-      variant="filled"
-      :disabled="!searchTerm"
-      @click="handleClear"
-    >
-      <i class="i-lucide:x" />
-    </CoreButton>
   </div>
 </template>
 
