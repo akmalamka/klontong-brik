@@ -94,6 +94,9 @@ const onSubmit = handleSubmit(async ({ email, password }) => {
         <p v-if="errors.confirmPassword" class="text-error body-text mt-1">
           {{ errors.confirmPassword }}
         </p>
+        <p v-if="error" class="text-error body-text mt-1">
+          {{ error }}
+        </p>
       </div>
       <!-- TODO: update button styling for submit -->
       <CoreButton
