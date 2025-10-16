@@ -8,12 +8,14 @@ import CoreAlert from '@/core/CoreAlert.vue'
 import CoreButton from '@/core/CoreButton.vue'
 import CoreSearchBar from '@/core/CoreSearchBar.vue'
 import { CoreTable, CoreTableBody, CoreTableCell, CoreTableHead, CoreTableHeader, CoreTableRow } from '@/core/table'
+import { useDrawerStore } from '@/stores/drawer'
 import { useProductsStore } from '@/stores/products'
 import { valueUpdater } from '@/utils.ts'
 
 const productsStore = useProductsStore()
+const drawerStore = useDrawerStore()
 const { products } = storeToRefs(productsStore)
-const { deleteProduct } = productsStore
+const { deleteProduct, getProductById } = productsStore
 
 const columnFilters = ref<ColumnFiltersState>([])
 
@@ -25,6 +27,23 @@ const globalFilter = computed<string>(() => {
 function handleDeleteConfirmed(productId?: number) {
   if (productId !== undefined) {
     deleteProduct(productId)
+  }
+}
+
+function handleViewProduct(productId?: number) {
+  if (productId !== undefined) {
+    const currentProduct = getProductById(productId)
+    if (currentProduct) {
+      drawerStore.openViewProduct(currentProduct)
+    }
+  }
+}
+function handleEditProduct(productId?: number) {
+  if (productId !== undefined) {
+    const currentProduct = getProductById(productId)
+    if (currentProduct) {
+      drawerStore.openEditProduct(currentProduct)
+    }
   }
 }
 
@@ -85,8 +104,8 @@ const columns: ColumnDef<ProductSummary>[] = [
         default: () => deleteButton,
       })
       return h('div', { class: 'flex gap-2' }, [
-        h(CoreButton, { to: `/manage/${product.id}` }, () => 'View'),
-        h(CoreButton, { class: 'bg-info color-white' }, () => ['Edit']),
+        h(CoreButton, { onClick: () => handleViewProduct(product.id) }, () => 'View'),
+        h(CoreButton, { class: 'bg-info color-white', onClick: () => handleEditProduct(product.id) }, () => ['Edit']),
         deleteAlert,
       ])
     },
