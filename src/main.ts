@@ -1,3 +1,4 @@
+import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 import { getCurrentUser, VueFire, VueFireAuth } from 'vuefire'
 import { firebaseApp } from '@/firebase'
@@ -8,6 +9,7 @@ import 'virtual:uno.css'
 import './styles.css'
 
 (async () => {
+  const pinia = createPinia()
   const app = createApp(App)
 
   app.use(VueFire, {
@@ -20,6 +22,7 @@ import './styles.css'
 
   // Init Router
   await setupRouter(app)
+  app.use(pinia)
 
   // mount app
   app.mount('#app')

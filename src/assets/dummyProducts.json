@@ -1,7 +1,7 @@
 [
   {
-    "id": 101,
-    "CategoryId": 14,
+    "id": 1,
+    "categoryId": 14,
     "categoryName": "Snacks",
     "sku": "MHZVTK001",
     "name": "Cheesy Crunch Bites",
@@ -14,8 +14,8 @@
     "price": 30000
   },
   {
-    "id": 102,
-    "CategoryId": 14,
+    "id": 2,
+    "categoryId": 14,
     "categoryName": "Snacks",
     "sku": "MHZVTK002",
     "name": "Spicy Chili Chips",
@@ -28,8 +28,8 @@
     "price": 32000
   },
   {
-    "id": 103,
-    "CategoryId": 14,
+    "id": 3,
+    "categoryId": 14,
     "categoryName": "Snacks",
     "sku": "MHZVTK003",
     "name": "Original Salty Sticks",
@@ -42,8 +42,8 @@
     "price": 28000
   },
   {
-    "id": 104,
-    "CategoryId": 14,
+    "id": 4,
+    "categoryId": 14,
     "categoryName": "Snacks",
     "sku": "MHZVTK004",
     "name": "Seaweed Puffs",
@@ -56,8 +56,8 @@
     "price": 35000
   },
   {
-    "id": 105,
-    "CategoryId": 14,
+    "id": 5,
+    "categoryId": 14,
     "categoryName": "Snacks",
     "sku": "MHZVTK005",
     "name": "BBQ Rings",
@@ -70,8 +70,8 @@
     "price": 30000
   },
   {
-    "id": 106,
-    "CategoryId": 14,
+    "id": 6,
+    "categoryId": 14,
     "categoryName": "Snacks",
     "sku": "MHZVTK006",
     "name": "Sour Cream & Onion",

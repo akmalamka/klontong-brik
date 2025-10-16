@@ -1,12 +1,15 @@
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
-import productsData from '@/assets/dummyProducts.json'
 import CoreButton from '@/core/CoreButton.vue'
 import CorePagination from '@/core/CorePagination.vue'
 import CoreSearchBar from '@/core/CoreSearchBar.vue'
+import { useProductsStore } from '@/stores/products'
 
-const products = ref(productsData)
 const currentPage = ref(1)
+
+const productsStore = useProductsStore()
+const { products, totalProducts } = storeToRefs(productsStore)
 
 const searchQuery = ref('')
 // TODO: update ITEMS_PER_PAGE
@@ -70,7 +73,7 @@ const displayedProducts = computed(() => {
     </div>
     <CorePagination
       v-model:page="currentPage"
-      :total-items="products.length"
+      :total-items="totalProducts"
       :items-per-page="ITEMS_PER_PAGE"
       :top-pagination-ref="productListRef"
     />
