@@ -74,10 +74,9 @@ function handleDeleteConfirmed(productId?: number) {
             description="This action will remove Banana Milk from your inventory. You won’t be able to undo this action."
             cancel-text="Cancel"
             apply-text="Delete product"
-            class="flex-1"
             @apply="handleDeleteConfirmed(product.id)"
           >
-            <CoreButton class="bg-error color-white ">
+            <CoreButton class="bg-error color-white flex-1">
               <i class="i-lucide:trash-2" />
               Delete
             </CoreButton>
