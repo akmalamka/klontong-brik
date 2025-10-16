@@ -41,7 +41,6 @@ export const useProductsStore = defineStore('products', () => {
     }
     products.value.push(newProduct)
     nextId.value++ // Increment the ID counter
-    // console.log(`Product added: ${newProduct.name}`)
   }
 
   /** Updates an existing product. */
@@ -49,9 +48,7 @@ export const useProductsStore = defineStore('products', () => {
     const index = products.value.findIndex(p => p.id === updatedProduct.id)
 
     if (index !== -1) {
-      // Replace the old product object with the new one
       products.value.splice(index, 1, updatedProduct)
-      // console.log(`Product updated: ${updatedProduct.name}`)
     }
     else {
       console.warn(`Product with ID ${updatedProduct.id} not found for editing.`)
@@ -63,10 +60,7 @@ export const useProductsStore = defineStore('products', () => {
     const initialLength = products.value.length
     products.value = products.value.filter(p => p.id !== id)
 
-    if (products.value.length < initialLength) {
-      // console.log(`Product with ID ${id} deleted.`)
-    }
-    else {
+    if (products.value.length >= initialLength) {
       console.warn(`Product with ID ${id} not found for deletion.`)
     }
   }

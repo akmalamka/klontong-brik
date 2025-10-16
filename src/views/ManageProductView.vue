@@ -38,13 +38,13 @@ if (!productDetail.value) {
       </span>
       <div>
         <span class="h4">Description</span>
-        <p class="body-text-small">
+        <p class="body-text-sm">
           {{ productDetail.description }}
         </p>
       </div>
       <div>
         <span class="h4">Details</span>
-        <ul class="list-disc list-inside body-text-small">
+        <ul class="list-disc list-inside body-text-sm">
           <li>Weight: {{ productDetail.weight }} grams</li>
           <li>Length: {{ productDetail.length }} cm</li>
           <li>Height: {{ productDetail.height }} cm</li>

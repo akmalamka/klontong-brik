@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
+import CoreAlert from '@/core/CoreAlert.vue'
 import CoreButton from '@/core/CoreButton.vue'
 import CorePagination from '@/core/CorePagination.vue'
 import CoreSearchBar from '@/core/CoreSearchBar.vue'
@@ -10,6 +11,7 @@ const currentPage = ref(1)
 
 const productsStore = useProductsStore()
 const { products, totalProducts } = storeToRefs(productsStore)
+const { deleteProduct } = productsStore
 
 const searchQuery = ref('')
 // TODO: update ITEMS_PER_PAGE
@@ -32,6 +34,12 @@ const displayedProducts = computed(() => {
     currentPage.value * ITEMS_PER_PAGE,
   )
 })
+
+function handleDeleteConfirmed(productId?: number) {
+  if (productId !== undefined) {
+    deleteProduct(productId)
+  }
+}
 </script>
 
 <template>
@@ -61,10 +69,19 @@ const displayedProducts = computed(() => {
             <i class="i-lucide:edit" />
             Edit
           </CoreButton>
-          <CoreButton class="bg-error color-white flex-1">
-            <i class="i-lucide:trash-2" />
-            Delete
-          </CoreButton>
+          <CoreAlert
+            title="Delete this product?"
+            description="This action will remove Banana Milk from your inventory. You won’t be able to undo this action."
+            cancel-text="Cancel"
+            apply-text="Delete product"
+            class="flex-1"
+            @apply="handleDeleteConfirmed(product.id)"
+          >
+            <CoreButton class="bg-error color-white ">
+              <i class="i-lucide:trash-2" />
+              Delete
+            </CoreButton>
+          </CoreAlert>
           <CoreButton class="grow-2" :to="`/manage/${product.id}`">
             View Details
           </CoreButton>

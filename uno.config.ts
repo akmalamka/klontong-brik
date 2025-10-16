@@ -28,7 +28,7 @@ export default defineConfig({
     ['h5', 'font-sans text-[16px] leading-[1.3] font-500'],
 
     ['body-text', 'font-sans text-[16px] leading-[1.5] font-500'],
-    ['body-text-small', 'font-sans text-[16px] leading-[1.5]'],
+    ['body-text-sm', 'font-sans text-[16px] leading-[1.5]'],
     ['caption', 'font-sans text-[12px] leading-[1.4] tracking-[0.025em]'],
 
     ['btn-text', 'font-sans text-[16px] leading-[1.2] tracking-[0.01em] font-600'],
