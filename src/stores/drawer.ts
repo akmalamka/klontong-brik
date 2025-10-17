@@ -7,6 +7,7 @@ type DrawerMode = 'closed' | 'add' | 'edit' | 'view'
 export const useDrawerStore = defineStore('drawer', () => {
   /** Current mode of the drawer: 'closed', 'add', 'edit', or 'view' */
   const mode = ref<DrawerMode>('closed')
+  const drawerTitle = ref<string>('')
 
   /** Data of the product being viewed or edited (null if in 'add' mode or 'closed') */
   const currentProduct = ref<Product | null>(null)
@@ -26,6 +27,7 @@ export const useDrawerStore = defineStore('drawer', () => {
    */
   function openAddProduct(): void {
     mode.value = 'add'
+    drawerTitle.value = 'Add New Product'
     currentProduct.value = null // Ensure no residual data
   }
 
@@ -35,6 +37,7 @@ export const useDrawerStore = defineStore('drawer', () => {
    */
   function openEditProduct(data: Product): void {
     mode.value = 'edit'
+    drawerTitle.value = 'Edit Product'
     currentProduct.value = data
   }
 
@@ -44,6 +47,7 @@ export const useDrawerStore = defineStore('drawer', () => {
    */
   function openViewProduct(data: Product): void {
     mode.value = 'view'
+    drawerTitle.value = 'Product Details'
     currentProduct.value = data
   }
 
@@ -52,11 +56,13 @@ export const useDrawerStore = defineStore('drawer', () => {
    */
   function closeDrawer(): void {
     mode.value = 'closed'
+    drawerTitle.value = ''
     currentProduct.value = null
   }
 
   return {
     mode,
+    drawerTitle,
     currentProduct,
     isOpen,
     productData,

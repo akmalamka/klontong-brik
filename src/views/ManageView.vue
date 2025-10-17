@@ -2,6 +2,7 @@
 import { storeToRefs } from 'pinia'
 import { useDrawerStore } from '@/stores/drawer'
 import DrawerView from './DrawerView.vue'
+import ProductFormView from './ProductFormView.vue'
 import TableView from './TableView.vue'
 
 const drawerStore = useDrawerStore()
@@ -17,7 +18,7 @@ const { mode, currentProduct } = storeToRefs(drawerStore)
     <TableView />
     <DrawerView>
       <div v-if="mode === 'add'">
-        Add Product
+        <ProductFormView />
       </div>
       <div v-if="mode === 'view' && currentProduct" class="flex flex-col gap-4">
         <img :src="currentProduct.image" alt="Product Image" class="max-w-[200px] h-auto rounded-4">

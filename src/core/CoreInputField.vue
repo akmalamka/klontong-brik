@@ -2,7 +2,7 @@
 import { useVModel } from '@vueuse/core'
 
 interface CoreInputFieldProps {
-  modelValue?: string
+  modelValue?: string | number
   type?: string
   placeholder?: string
   disabled?: boolean
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<CoreInputFieldProps>(), {
 })
 
 const emit = defineEmits<{
-  'update:modelValue': [value: string]
+  'update:modelValue': [value: string | number]
 }>()
 
 const modelValue = useVModel(

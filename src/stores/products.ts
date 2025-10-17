@@ -22,10 +22,9 @@ export type ProductSummary = Pick<Product, 'id' | 'categoryName' | 'name' | 'pri
 export const useProductsStore = defineStore('products', () => {
   const products = ref<Product[]>(productsData)
 
-  const nextId = ref(7) // State for generating unique IDs
+  const nextId = ref(productsData.length + 1)
 
   // === GETTERS ===
-
   const totalProducts = computed(() => products.value.length)
 
   /** Getter function that returns a function for lookup */
@@ -41,7 +40,7 @@ export const useProductsStore = defineStore('products', () => {
       ...productData,
       id: nextId.value, // Assign the next available ID
     }
-    products.value.push(newProduct)
+    products.value = [...products.value, newProduct]
     nextId.value++ // Increment the ID counter
   }
 

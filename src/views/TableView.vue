@@ -16,6 +16,7 @@ const productsStore = useProductsStore()
 const drawerStore = useDrawerStore()
 const { products } = storeToRefs(productsStore)
 const { deleteProduct, getProductById } = productsStore
+const { openAddProduct } = drawerStore
 
 const columnFilters = ref<ColumnFiltersState>([])
 
@@ -113,7 +114,7 @@ const columns: ColumnDef<ProductSummary>[] = [
 ]
 
 const table: Table<ProductSummary> = useVueTable({
-  get data() { return products.value },
+  data: products,
   columns,
   // Feature Models
   getCoreRowModel: getCoreRowModel(),
@@ -136,13 +137,18 @@ function updateSearchTerm(value: string | number | null): void {
 
 <template>
   <div class="w-full">
-    <div class="flex items-center justify-center py-4">
+    <div class="flex items-center justify-between py-4">
       <CoreSearchBar
         :model-value="globalFilter"
         :debounce-time="400"
         placeholder="Search product name..."
+        class="w-1/2"
         @update:model-value="updateSearchTerm"
       />
+      <CoreButton class="bg-primary color-white" @click="openAddProduct">
+        <i class="i-lucide:plus" />
+        Add Product
+      </CoreButton>
     </div>
     <div class="rounded-md border">
       <CoreTable>

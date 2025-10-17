@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import { VisuallyHidden } from 'radix-vue'
 import { DrawerClose, DrawerContent, DrawerDescription, DrawerOverlay, DrawerPortal, DrawerRoot, DrawerTitle } from 'vaul-vue'
 import { useDrawerStore } from '@/stores/drawer'
 
 const drawerStore = useDrawerStore()
+
+const { drawerTitle } = storeToRefs(drawerStore)
 
 function handleOpenChange(newOpenState: boolean) {
   // Update your store's state to match the drawer's requested new state
@@ -33,7 +36,8 @@ function handleOpenChange(newOpenState: boolean) {
         </VisuallyHidden>
 
         <DrawerTitle>
-          <div class="flex items-center justify-between px-4 py-5 md:(justify-end gap-x-4 body-text)">
+          <div class="flex items-center justify-between px-4 py-5 md:(gap-x-4 body-text)">
+            {{ drawerTitle }}
             <DrawerClose class="w-10 h-10 flex justify-center items-center rounded-full bg-black color-white">
               <i
                 class="i-lucide:x"
