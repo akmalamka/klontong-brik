@@ -112,6 +112,11 @@ This verifies the frontend's ability to handle new user registration and email v
 6.  The verified user will gain access to the **Manage Page**.
 
 ***
+## ⚠️ Important API Notice (CRUDCRUD Expiration)
+
+The mock backend uses **`crudcrud.com`**, which provides temporary endpoints that usually expire after about **10 days**.
+
+If you run the application and the product list remains empty, or if API actions consistently fail with a **404 Not Found** error, it means the endpoint has expired. Please let me know so that I can extend the api, thanks!
 
 ## ⚠️ Important Notes
 
