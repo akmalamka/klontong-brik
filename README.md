@@ -86,8 +86,8 @@ This uses the pre-configured mock API data.
 
 1.  Go to the **Login Page** at `http://localhost:5173/login`.
 2.  Log in using the default user credentials:
-    * **Email:** `klontong@gmail.com`
-    * **Password:** `Qwerty123`
+    * **Email:** `akmal@gmail.com`
+    * **Password:** `12345qwerty`
 3.  You will be automatically redirected to the **Manage Page**.
 4.  Test the following actions:
     * **View** (click on a product row)
