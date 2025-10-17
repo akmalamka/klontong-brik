@@ -88,7 +88,7 @@ This uses the pre-configured mock API data.
 2.  Log in using the default user credentials:
     * **Email:** `akmal@gmail.com`
     * **Password:** `12345qwerty`
-3.  You will be automatically redirected to the **Manage Page**. (If you didn't get directed to home page / kicked back to login page, please verify the email by using the no 2 (Testing the Full Authentication Cycle in page 3))
+3.  You will be automatically redirected to the **Manage Page**. (If you didn't get directed to home page / kicked back to login page, please verify the email by using the no 2 (Testing the Full Authentication Cycle in step 3), probably the email has not been verified yet :( ))
 4.  Test the following actions:
     * **View** (click on a product row)
     * **Create** (click the Add button)
