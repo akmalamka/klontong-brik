@@ -169,14 +169,11 @@ const onSubmit = handleSubmit(async (values) => {
     // Real API call here
     // If data exist then edit mode
     if (data) {
-      editProduct({ id: data.id, ...productData })
+      editProduct({ _id: data._id, ...productData })
     }
     else { // else add mode
       addProduct(productData)
     }
-
-    await new Promise(resolve => setTimeout(resolve, 500))
-
     successMessage.value = `Successfully added product: ${productData.name}`
     closeDrawer()
     resetForm() // Clear the form fields after success

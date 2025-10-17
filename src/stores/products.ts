@@ -1,11 +1,12 @@
+import type { NewProductPayload } from '@/api/productApi'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import productsData from '@/assets/dummyProducts.json'
+import { createProduct, deleteProductApi, fetchAllProducts, updateProduct } from '@/api/productApi'
+import { useCategoryStore } from './categories'
 
 export interface Product {
-  id: number
+  _id: string
   categoryId: number
-  categoryName: string
   image: string
   sku: string
   name: string
@@ -17,75 +18,92 @@ export interface Product {
   price: number
 }
 
-export type ProductSummary = Pick<Product, 'id' | 'categoryName' | 'name' | 'price'>
+export interface EnrichedProduct extends Product {
+  categoryName: string
+}
 
 export const useProductsStore = defineStore('products', () => {
-  const products = ref<Product[]>(productsData)
+  const categoryStore = useCategoryStore()
 
-  const nextId = ref(productsData.length + 1)
+  const products = ref<Product[]>([])
+  const isLoading = ref(false)
 
   // === GETTERS ===
   const totalProducts = computed(() => products.value.length)
 
-  /** Getter function that returns a function for lookup */
+  const enrichedProducts = computed<EnrichedProduct[]>(() => {
+    return products.value.map(product => ({
+      ...product,
+      categoryName: categoryStore.getCategoryName(product.categoryId),
+    }))
+  })
+
   const getProductById = computed(() => {
-    return (id: number) => products.value.find(p => p.id === id)
+    return (_id: string) => enrichedProducts.value.find(p => p._id === _id)
   })
 
   // === ACTIONS ===
 
-  /** Adds a new product to the store. */
-  function addProduct(productData: Omit<Product, 'id'>) {
-    const newProduct: Product = {
-      ...productData,
-      id: nextId.value, // Assign the next available ID
-    }
-    products.value = [...products.value, newProduct]
-    nextId.value++ // Increment the ID counter
-  }
-
-  /** Updates an existing product. */
-  function editProduct(updatedProduct: Product) {
-    products.value = products.value.map((p) => {
-    // If the IDs match, return the updated product.
-      if (p.id === updatedProduct.id) {
-        return updatedProduct
-      }
-      // Otherwise, return the original product object.
-      return p
-    })
-
-    const wasUpdated = products.value.some(p => p.id === updatedProduct.id)
-    if (!wasUpdated) {
-      console.warn(`Product with ID ${updatedProduct.id} not found for editing.`)
-    }
-  }
-
-  /** Deletes a product by its ID. */
-  function deleteProduct(id: number) {
-    const initialLength = products.value.length
-    products.value = products.value.filter(p => p.id !== id)
-
-    if (products.value.length >= initialLength) {
-      console.warn(`Product with ID ${id} not found for deletion.`)
-    }
-  }
-
-  /** Simulate an async operation. */
   async function fetchProducts() {
-    await new Promise(resolve => setTimeout(resolve, 500))
-    // console.log('Simulated product fetch complete.')
-    // Logic to update products.value here
+    isLoading.value = true
+    try {
+      // Ensure categories are fetched before products for enrichment to work
+      await categoryStore.fetchCategories()
+      products.value = await fetchAllProducts()
+    }
+    catch (error) {
+      console.error('API Fetch Error:', error)
+    }
+    finally {
+      isLoading.value = false
+    }
+  }
+
+  async function addProduct(productData: NewProductPayload) {
+    try {
+      await createProduct(productData)
+      await fetchProducts() // Re-fetch all to ensure all state in sync
+    }
+    catch (error) {
+      console.error('API Add Error:', error)
+    }
+  }
+
+  async function editProduct(updatedProduct: Product) {
+    const { _id, ...payload } = updatedProduct
+
+    try {
+      await updateProduct(_id, payload)
+
+      products.value = products.value.map(p =>
+        p._id === _id ? updatedProduct : p,
+      )
+    }
+    catch (error) {
+      console.error('API Edit Error:', error)
+    }
+  }
+
+  async function deleteProduct(_id: string) {
+    try {
+      await deleteProductApi(_id)
+
+      products.value = products.value.filter(p => p._id !== _id)
+    }
+    catch (error) {
+      console.error('API Delete Error:', error)
+    }
   }
 
   // --------------------------------------------
   return {
     // State
     products,
-    nextId,
+    isLoading,
 
     // Getters
     totalProducts,
+    enrichedProducts,
     getProductById,
 
     // Actions

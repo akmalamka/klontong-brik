@@ -34,7 +34,7 @@ async function handleLogout() {
         <img src="./assets/logo-full.svg" class="h-10" alt="Klontong Logo">
       </RouterLink>
       <RouterLink v-if="user" to="/manage" aria-label="Go to manage product" class="h4">
-        Manage Products
+        Manage
       </RouterLink>
 
       <CoreButton v-if="user" aria-label="Logout" @click="handleLogout">

@@ -2,7 +2,6 @@
   {
     "id": 1,
     "categoryId": 1,
-    "categoryName": "Snacks",
     "sku": "SNK001",
     "name": "Cheesy Crunch Bites (Large)",
     "description": "Extra cheesy flavored potato crisps in a large family bag.",
@@ -16,7 +15,6 @@
   {
     "id": 2,
     "categoryId": 1,
-    "categoryName": "Snacks",
     "sku": "SNK002",
     "name": "Spicy Chili Chips (Family Pack)",
     "description": "A fiery kick for your taste buds, family size.",
@@ -30,7 +28,6 @@
   {
     "id": 3,
     "categoryId": 1,
-    "categoryName": "Snacks",
     "sku": "SNK003",
     "name": "Original Salty Sticks (Party Size)",
     "description": "Classic, irresistible saltiness, ideal for parties.",
@@ -44,7 +41,6 @@
   {
     "id": 4,
     "categoryId": 1,
-    "categoryName": "Snacks",
     "sku": "SNK004",
     "name": "Seaweed Puffs (Bulk Bag)",
     "description": "Savory seaweed flavor in a value bag.",
@@ -58,7 +54,6 @@
   {
     "id": 5,
     "categoryId": 1,
-    "categoryName": "Snacks",
     "sku": "SNK005",
     "name": "BBQ Rings (Single Serve)",
     "description": "Smoky barbecue flavor, perfect portion.",
@@ -72,7 +67,6 @@
   {
     "id": 6,
     "categoryId": 1,
-    "categoryName": "Snacks",
     "sku": "SNK006",
     "name": "Sour Cream & Onion (Canister)",
     "description": "Tangy and flavorful potato chips in a resealable can.",
@@ -86,7 +80,6 @@
   {
     "id": 7,
     "categoryId": 1,
-    "categoryName": "Snacks",
     "sku": "SNK007",
     "name": "Sweet Popcorn (Ready-to-Eat)",
     "description": "Light and fluffy popcorn with a sweet glaze.",
@@ -100,7 +93,6 @@
   {
     "id": 8,
     "categoryId": 1,
-    "categoryName": "Snacks",
     "sku": "SNK008",
     "name": "Chocolate Energy Bar",
     "description": "High-energy bar with dark chocolate and nuts.",
@@ -114,7 +106,6 @@
   {
     "id": 9,
     "categoryId": 1,
-    "categoryName": "Snacks",
     "sku": "SNK009",
     "name": "Fruit Leather Rolls (5-pack)",
     "description": "Natural fruit snack, no added sugar.",
@@ -128,7 +119,6 @@
   {
     "id": 10,
     "categoryId": 1,
-    "categoryName": "Snacks",
     "sku": "SNK010",
     "name": "Garlic Bread Crisps",
     "description": "Crunchy bread slices with rich garlic butter flavor.",
@@ -142,7 +132,6 @@
   {
     "id": 11,
     "categoryId": 1,
-    "categoryName": "Snacks",
     "sku": "SNK011",
     "name": "Salted Peanuts (500g)",
     "description": "Roasted and perfectly salted peanuts.",
@@ -156,7 +145,6 @@
   {
     "id": 12,
     "categoryId": 1,
-    "categoryName": "Snacks",
     "sku": "SNK012",
     "name": "Wasabi Green Peas",
     "description": "Crunchy green peas with a strong wasabi kick.",
@@ -170,7 +158,6 @@
   {
     "id": 13,
     "categoryId": 2,
-    "categoryName": "Beverages",
     "sku": "BEV001",
     "name": "Iced Lemon Tea Mix (Bulk)",
     "description": "Family size pack of refreshing drink mix.",
@@ -184,7 +171,6 @@
   {
     "id": 14,
     "categoryId": 2,
-    "categoryName": "Beverages",
     "sku": "BEV002",
     "name": "Cold Brew Coffee Concentrate (Dark Roast)",
     "description": "Rich, smooth coffee concentrate for lattes.",
@@ -198,7 +184,6 @@
   {
     "id": 15,
     "categoryId": 2,
-    "categoryName": "Beverages",
     "sku": "BEV003",
     "name": "Sparkling Mango Juice (Cans)",
     "description": "Six-pack of naturally flavored and bubbly tropical drink.",
@@ -212,7 +197,6 @@
   {
     "id": 16,
     "categoryId": 2,
-    "categoryName": "Beverages",
     "sku": "BEV004",
     "name": "Coconut Water (1L)",
     "description": "Pure, natural coconut water for hydration.",
@@ -226,7 +210,6 @@
   {
     "id": 17,
     "categoryId": 2,
-    "categoryName": "Beverages",
     "sku": "BEV005",
     "name": "Green Tea Bags (100 count)",
     "description": "Classic green tea, rich in antioxidants.",
@@ -240,7 +223,6 @@
   {
     "id": 18,
     "categoryId": 2,
-    "categoryName": "Beverages",
     "sku": "BEV006",
     "name": "Orange Juice (Pulp-Free)",
     "description": "100% pure pressed orange juice.",
@@ -254,7 +236,6 @@
   {
     "id": 19,
     "categoryId": 2,
-    "categoryName": "Beverages",
     "sku": "BEV007",
     "name": "Zero-Sugar Cola (6-pack)",
     "description": "Classic cola taste without the sugar.",
@@ -268,7 +249,6 @@
   {
     "id": 20,
     "categoryId": 2,
-    "categoryName": "Beverages",
     "sku": "BEV008",
     "name": "Mineral Water (Bottled, 12-pack)",
     "description": "Natural spring water in convenient bottles.",
@@ -282,7 +262,6 @@
   {
     "id": 21,
     "categoryId": 2,
-    "categoryName": "Beverages",
     "sku": "BEV009",
     "name": "Hot Chocolate Mix (Box)",
     "description": "Rich and creamy hot chocolate for cozy evenings.",
@@ -296,7 +275,6 @@
   {
     "id": 22,
     "categoryId": 2,
-    "categoryName": "Beverages",
     "sku": "BEV010",
     "name": "Soy Milk (Unsweetened, 1L)",
     "description": "Plant-based milk alternative.",
@@ -310,7 +288,6 @@
   {
     "id": 23,
     "categoryId": 2,
-    "categoryName": "Beverages",
     "sku": "BEV011",
     "name": "Energy Drink (Single Can)",
     "description": "Maximum boost for focus and energy.",
@@ -324,7 +301,6 @@
   {
     "id": 24,
     "categoryId": 2,
-    "categoryName": "Beverages",
     "sku": "BEV012",
     "name": "Apple Cider Vinegar (Organic)",
     "description": "Used for cooking and health drinks.",
@@ -338,7 +314,6 @@
   {
     "id": 25,
     "categoryId": 3,
-    "categoryName": "Dairy & Eggs",
     "sku": "DRE001",
     "name": "Full Cream UHT Milk (1L, 3-Pack)",
     "description": "Triple pack of long-life milk.",
@@ -352,7 +327,6 @@
   {
     "id": 26,
     "categoryId": 3,
-    "categoryName": "Dairy & Eggs",
     "sku": "DRE002",
     "name": "Unsalted Butter (500g)",
     "description": "Double size high-quality butter.",
@@ -366,7 +340,6 @@
   {
     "id": 27,
     "categoryId": 3,
-    "categoryName": "Dairy & Eggs",
     "sku": "DRE003",
     "name": "Dozen Large White Eggs (Free Range)",
     "description": "Farm-fresh, free-range large white eggs.",
@@ -380,7 +353,6 @@
   {
     "id": 28,
     "categoryId": 3,
-    "categoryName": "Dairy & Eggs",
     "sku": "DRE004",
     "name": "Plain Greek Yogurt (1kg)",
     "description": "High protein, thick and creamy Greek yogurt.",
@@ -394,7 +366,6 @@
   {
     "id": 29,
     "categoryId": 3,
-    "categoryName": "Dairy & Eggs",
     "sku": "DRE005",
     "name": "Cheddar Cheese Block (200g)",
     "description": "Sharp cheddar, great for grating.",
@@ -408,7 +379,6 @@
   {
     "id": 30,
     "categoryId": 3,
-    "categoryName": "Dairy & Eggs",
     "sku": "DRE006",
     "name": "Whipped Cream (Spray Can)",
     "description": "Sweetened cream, ready to top desserts.",
@@ -422,7 +392,6 @@
   {
     "id": 31,
     "categoryId": 3,
-    "categoryName": "Dairy & Eggs",
     "sku": "DRE007",
     "name": "Small Curd Cottage Cheese (300g)",
     "description": "Protein-packed, versatile cheese.",
@@ -436,7 +405,6 @@
   {
     "id": 32,
     "categoryId": 3,
-    "categoryName": "Dairy & Eggs",
     "sku": "DRE008",
     "name": "Mozzarella Shredded Cheese (500g)",
     "description": "Perfectly shredded for pizzas and pasta.",
@@ -450,7 +418,6 @@
   {
     "id": 33,
     "categoryId": 3,
-    "categoryName": "Dairy & Eggs",
     "sku": "DRE009",
     "name": "Lactose-Free Milk (1L)",
     "description": "Easy to digest, same great taste.",
@@ -464,7 +431,6 @@
   {
     "id": 34,
     "categoryId": 3,
-    "categoryName": "Dairy & Eggs",
     "sku": "DRE010",
     "name": "Organic Salted Butter (250g)",
     "description": "Butter made from organic cream, lightly salted.",
@@ -478,7 +444,6 @@
   {
     "id": 35,
     "categoryId": 3,
-    "categoryName": "Dairy & Eggs",
     "sku": "DRE011",
     "name": "Quail Eggs (15 count)",
     "description": "Small, delicate eggs for gourmet dishes.",
@@ -492,7 +457,6 @@
   {
     "id": 36,
     "categoryId": 3,
-    "categoryName": "Dairy & Eggs",
     "sku": "DRE012",
     "name": "Plain Kefir Drink (500ml)",
     "description": "Fermented milk drink, rich in probiotics.",
@@ -506,7 +470,6 @@
   {
     "id": 37,
     "categoryId": 4,
-    "categoryName": "Produce",
     "sku": "PRO001",
     "name": "Gala Red Apples (1kg Bag)",
     "description": "Crisp and sweet, a healthy snack.",
@@ -520,7 +483,6 @@
   {
     "id": 38,
     "categoryId": 4,
-    "categoryName": "Produce",
     "sku": "PRO002",
     "name": "Organic Carrots (500g Bundle)",
     "description": "Farm fresh organic carrots.",
@@ -534,7 +496,6 @@
   {
     "id": 39,
     "categoryId": 4,
-    "categoryName": "Produce",
     "sku": "PRO003",
     "name": "Ripe Bananas (1 Bunch, 1.5kg)",
     "description": "Source of potassium, perfect energy booster.",
@@ -548,7 +509,6 @@
   {
     "id": 40,
     "categoryId": 4,
-    "categoryName": "Produce",
     "sku": "PRO004",
     "name": "Cherry Tomatoes (250g Container)",
     "description": "Sweet, juicy tomatoes perfect for salads.",
@@ -562,7 +522,6 @@
   {
     "id": 41,
     "categoryId": 4,
-    "categoryName": "Produce",
     "sku": "PRO005",
     "name": "Avocado Hass (Single Large)",
     "description": "Creamy avocado, great for toast and guacamole.",
@@ -576,7 +535,6 @@
   {
     "id": 42,
     "categoryId": 4,
-    "categoryName": "Produce",
     "sku": "PRO006",
     "name": "Fresh Broccoli Crowns (500g)",
     "description": "Healthy green vegetable, great steamed or roasted.",
@@ -590,7 +548,6 @@
   {
     "id": 43,
     "categoryId": 4,
-    "categoryName": "Produce",
     "sku": "PRO007",
     "name": "Yellow Onions (1kg Bag)",
     "description": "Essential kitchen staple for cooking.",
@@ -604,7 +561,6 @@
   {
     "id": 44,
     "categoryId": 4,
-    "categoryName": "Produce",
     "sku": "PRO008",
     "name": "Red Bell Peppers (2 count)",
     "description": "Sweet and colorful, perfect for stir-fries.",
@@ -618,7 +574,6 @@
   {
     "id": 45,
     "categoryId": 4,
-    "categoryName": "Produce",
     "sku": "PRO009",
     "name": "Romaine Lettuce (Single Head)",
     "description": "Crisp leaves, ideal for Caesar salads.",
@@ -632,7 +587,6 @@
   {
     "id": 46,
     "categoryId": 4,
-    "categoryName": "Produce",
     "sku": "PRO010",
     "name": "Lemons (Bag of 6)",
     "description": "Fresh and tangy citrus fruit.",
@@ -646,7 +600,6 @@
   {
     "id": 47,
     "categoryId": 4,
-    "categoryName": "Produce",
     "sku": "PRO011",
     "name": "Ginger Root (200g)",
     "description": "Fresh ginger for cooking and tea.",
@@ -660,7 +613,6 @@
   {
     "id": 48,
     "categoryId": 4,
-    "categoryName": "Produce",
     "sku": "PRO012",
     "name": "White Potatoes (2kg Bag)",
     "description": "All-purpose potatoes, great for mashing or frying.",
@@ -674,7 +626,6 @@
   {
     "id": 49,
     "categoryId": 5,
-    "categoryName": "Meats & Seafood",
     "sku": "MTS001",
     "name": "Chicken Breast Fillets (1kg)",
     "description": "Lean, high-protein chicken cuts, family pack.",
@@ -688,7 +639,6 @@
   {
     "id": 50,
     "categoryId": 5,
-    "categoryName": "Meats & Seafood",
     "sku": "MTS002",
     "name": "Salmon Steaks (4 pieces, Atlantic)",
     "description": "Rich in Omega-3 fatty acids, four large cuts.",
@@ -702,7 +652,6 @@
   {
     "id": 51,
     "categoryId": 5,
-    "categoryName": "Meats & Seafood",
     "sku": "MTS003",
     "name": "Ground Beef (500g, Lean)",
     "description": "90/10 mix, perfect for health-conscious cooking.",
@@ -716,7 +665,6 @@
   {
     "id": 52,
     "categoryId": 5,
-    "categoryName": "Meats & Seafood",
     "sku": "MTS004",
     "name": "Pork Chops (4 count)",
     "description": "Thick cut, bone-in pork chops.",
@@ -730,7 +678,6 @@
   {
     "id": 53,
     "categoryId": 5,
-    "categoryName": "Meats & Seafood",
     "sku": "MTS005",
     "name": "Shrimp (Raw, Peeled, 250g)",
     "description": "Medium size, ready for stir-fry or grilling.",
@@ -744,7 +691,6 @@
   {
     "id": 54,
     "categoryId": 5,
-    "categoryName": "Meats & Seafood",
     "sku": "MTS006",
     "name": "Beef Steak (Sirloin, 300g)",
     "description": "Premium sirloin cut, tender and flavorful.",
@@ -758,7 +704,6 @@
   {
     "id": 55,
     "categoryId": 5,
-    "categoryName": "Meats & Seafood",
     "sku": "MTS007",
     "name": "Tofu (Firm, 400g)",
     "description": "Plant-based protein, excellent texture.",
@@ -772,7 +717,6 @@
   {
     "id": 56,
     "categoryId": 5,
-    "categoryName": "Meats & Seafood",
     "sku": "MTS008",
     "name": "Fish Fillets (Tilapia, Frozen, 500g)",
     "description": "Individually wrapped frozen fish portions.",
@@ -786,7 +730,6 @@
   {
     "id": 57,
     "categoryId": 5,
-    "categoryName": "Meats & Seafood",
     "sku": "MTS009",
     "name": "Lamb Chops (3 count)",
     "description": "Premium cut of lamb, great for grilling.",
@@ -800,7 +743,6 @@
   {
     "id": 58,
     "categoryId": 5,
-    "categoryName": "Meats & Seafood",
     "sku": "MTS010",
     "name": "Chicken Wings (1kg)",
     "description": "Fresh chicken wings, ready for BBQ.",
@@ -814,7 +756,6 @@
   {
     "id": 59,
     "categoryId": 5,
-    "categoryName": "Meats & Seafood",
     "sku": "MTS011",
     "name": "Smoked Sausage (300g)",
     "description": "Fully cooked, savory smoked sausage.",
@@ -828,7 +769,6 @@
   {
     "id": 60,
     "categoryId": 5,
-    "categoryName": "Meats & Seafood",
     "sku": "MTS012",
     "name": "Mussels (Fresh, 500g)",
     "description": "Delicious shellfish, great for pasta or steaming.",
@@ -842,7 +782,6 @@
   {
     "id": 61,
     "categoryId": 6,
-    "categoryName": "Bakery",
     "sku": "BAK001",
     "name": "Whole Wheat Bread (Large)",
     "description": "High fiber, large loaf of freshly baked bread.",
@@ -856,7 +795,6 @@
   {
     "id": 62,
     "categoryId": 6,
-    "categoryName": "Bakery",
     "sku": "BAK002",
     "name": "Almond Croissants (2-pack)",
     "description": "Flaky pastry with sweet almond filling.",
@@ -870,7 +808,6 @@
   {
     "id": 63,
     "categoryId": 6,
-    "categoryName": "Bakery",
     "sku": "BAK003",
     "name": "Sesame Bagels (5-pack)",
     "description": "Classic boiled and baked bagels with sesame seeds.",
@@ -884,7 +821,6 @@
   {
     "id": 64,
     "categoryId": 6,
-    "categoryName": "Bakery",
     "sku": "BAK004",
     "name": "Sourdough Loaf (Rustic)",
     "description": "Artisan sourdough with a crispy crust.",
@@ -898,7 +834,6 @@
   {
     "id": 65,
     "categoryId": 6,
-    "categoryName": "Bakery",
     "sku": "BAK005",
     "name": "Chocolate Chip Cookies (6-pack)",
     "description": "Soft and chewy classic chocolate chip cookies.",
@@ -912,7 +847,6 @@
   {
     "id": 66,
     "categoryId": 6,
-    "categoryName": "Bakery",
     "sku": "BAK006",
     "name": "Ciabatta Rolls (4-pack)",
     "description": "Light, airy Italian rolls, great for sandwiches.",
@@ -926,7 +860,6 @@
   {
     "id": 67,
     "categoryId": 6,
-    "categoryName": "Bakery",
     "sku": "BAK007",
     "name": "Plain Donuts (Dozen)",
     "description": "Freshly baked classic glazed donuts.",
@@ -940,7 +873,6 @@
   {
     "id": 68,
     "categoryId": 6,
-    "categoryName": "Bakery",
     "sku": "BAK008",
     "name": "Garlic Focaccia (Square)",
     "description": "Soft Italian flatbread topped with garlic and herbs.",
@@ -954,7 +886,6 @@
   {
     "id": 69,
     "categoryId": 6,
-    "categoryName": "Bakery",
     "sku": "BAK009",
     "name": "Brownie Bites (8-pack)",
     "description": "Fudgy chocolate brownie small squares.",
@@ -968,7 +899,6 @@
   {
     "id": 70,
     "categoryId": 6,
-    "categoryName": "Bakery",
     "sku": "BAK010",
     "name": "Gluten-Free Sandwich Bread",
     "description": "Soft bread suitable for gluten sensitivities.",
@@ -982,7 +912,6 @@
   {
     "id": 71,
     "categoryId": 6,
-    "categoryName": "Bakery",
     "sku": "BAK011",
     "name": "Hot Dog Buns (8 count)",
     "description": "Soft buns perfect for hot dogs and sausages.",
@@ -996,7 +925,6 @@
   {
     "id": 72,
     "categoryId": 6,
-    "categoryName": "Bakery",
     "sku": "BAK012",
     "name": "Mini Muffins (12 count)",
     "description": "Assorted flavors of small, delicious muffins.",
@@ -1010,7 +938,6 @@
   {
     "id": 73,
     "categoryId": 7,
-    "categoryName": "Household",
     "sku": "HOS001",
     "name": "Multipurpose Cleaner Spray (Refill)",
     "description": "Large refill bottle for your cleaner spray.",
@@ -1024,7 +951,6 @@
   {
     "id": 74,
     "categoryId": 7,
-    "categoryName": "Household",
     "sku": "HOS002",
     "name": "Microfiber Towels (Set of 6)",
     "description": "Double pack of cleaning cloths.",
@@ -1038,7 +964,6 @@
   {
     "id": 75,
     "categoryId": 7,
-    "categoryName": "Household",
     "sku": "HOS003",
     "name": "Large Kitchen Trash Bags (100 count)",
     "description": "Value pack of durable kitchen trash bags.",
@@ -1052,7 +977,6 @@
   {
     "id": 76,
     "categoryId": 7,
-    "categoryName": "Household",
     "sku": "HOS004",
     "name": "Dish Soap (Lavender Scent, 1L)",
     "description": "Tough on grease, gentle on hands.",
@@ -1066,7 +990,6 @@
   {
     "id": 77,
     "categoryId": 7,
-    "categoryName": "Household",
     "sku": "HOS005",
     "name": "Toilet Paper (12 Rolls, 2-Ply)",
     "description": "Soft and strong bathroom tissue.",
@@ -1080,7 +1003,6 @@
   {
     "id": 78,
     "categoryId": 7,
-    "categoryName": "Household",
     "sku": "HOS006",
     "name": "Laundry Detergent Pods (40 count)",
     "description": "Convenient, powerful cleaning pods.",
@@ -1094,7 +1016,6 @@
   {
     "id": 79,
     "categoryId": 7,
-    "categoryName": "Household",
     "sku": "HOS007",
     "name": "Air Freshener Spray (Citrus)",
     "description": "Eliminates odors and leaves a fresh scent.",
@@ -1108,7 +1029,6 @@
   {
     "id": 80,
     "categoryId": 7,
-    "categoryName": "Household",
     "sku": "HOS008",
     "name": "Glass Cleaner (Ammonia-Free)",
     "description": "Streak-free shine for windows and mirrors.",
@@ -1122,7 +1042,6 @@
   {
     "id": 81,
     "categoryId": 7,
-    "categoryName": "Household",
     "sku": "HOS009",
     "name": "Tin Foil Rolls (Heavy Duty)",
     "description": "Thick aluminum foil for cooking and storage.",
@@ -1136,7 +1055,6 @@
   {
     "id": 82,
     "categoryId": 7,
-    "categoryName": "Household",
     "sku": "HOS010",
     "name": "Hand Sanitizer (Large Pump)",
     "description": "70% alcohol hand sanitizer for the home or office.",
@@ -1150,7 +1068,6 @@
   {
     "id": 83,
     "categoryId": 7,
-    "categoryName": "Household",
     "sku": "HOS011",
     "name": "Vacuum Cleaner Bags (Universal, 5-pack)",
     "description": "Replacement bags for most canister vacuums.",
@@ -1164,7 +1081,6 @@
   {
     "id": 84,
     "categoryId": 7,
-    "categoryName": "Household",
     "sku": "HOS012",
     "name": "Plastic Food Wrap (1000 ft)",
     "description": "Cling film for food preservation.",
@@ -1178,7 +1094,6 @@
   {
     "id": 85,
     "categoryId": 8,
-    "categoryName": "Personal Care",
     "sku": "PRC001",
     "name": "Bamboo Toothbrush (4-pack)",
     "description": "Family pack of eco-friendly toothbrushes.",
@@ -1192,7 +1107,6 @@
   {
     "id": 86,
     "categoryId": 8,
-    "categoryName": "Personal Care",
     "sku": "PRC002",
     "name": "Moisturizing Aloe Vera Lotion (Pump)",
     "description": "Large bottle of deeply hydrating and soothing lotion.",
@@ -1206,7 +1120,6 @@
   {
     "id": 87,
     "categoryId": 8,
-    "categoryName": "Personal Care",
     "sku": "PRC003",
     "name": "Mint Mouthwash (750ml)",
     "description": "Extra large bottle for daily oral care.",
@@ -1220,7 +1133,6 @@
   {
     "id": 88,
     "categoryId": 8,
-    "categoryName": "Personal Care",
     "sku": "PRC004",
     "name": "Shampoo (Sulfate-Free, 500ml)",
     "description": "Gentle, moisturizing shampoo for all hair types.",
@@ -1234,7 +1146,6 @@
   {
     "id": 89,
     "categoryId": 8,
-    "categoryName": "Personal Care",
     "sku": "PRC005",
     "name": "Body Wash (Eucalyptus, 750ml)",
     "description": "Invigorating body wash with essential oils.",
@@ -1248,7 +1159,6 @@
   {
     "id": 90,
     "categoryId": 8,
-    "categoryName": "Personal Care",
     "sku": "PRC006",
     "name": "Deodorant Stick (Unscented)",
     "description": "Aluminum-free, long-lasting odor protection.",
@@ -1262,7 +1172,6 @@
   {
     "id": 91,
     "categoryId": 8,
-    "categoryName": "Personal Care",
     "sku": "PRC007",
     "name": "Sunscreen Lotion SPF 50",
     "description": "Broad spectrum UVA/UVB protection, water-resistant.",
@@ -1276,7 +1185,6 @@
   {
     "id": 92,
     "categoryId": 8,
-    "categoryName": "Personal Care",
     "sku": "PRC008",
     "name": "Hand Soap (Foaming, Refill)",
     "description": "Economical refill for foaming hand soap dispensers.",
@@ -1290,7 +1198,6 @@
   {
     "id": 93,
     "categoryId": 8,
-    "categoryName": "Personal Care",
     "sku": "PRC009",
     "name": "Floss Picks (90 count)",
     "description": "Easy-to-use dental floss picks.",
@@ -1304,7 +1211,6 @@
   {
     "id": 94,
     "categoryId": 8,
-    "categoryName": "Personal Care",
     "sku": "PRC010",
     "name": "Facial Cleanser (Gel, 150ml)",
     "description": "Gentle, non-drying cleanser for daily use.",
@@ -1318,7 +1224,6 @@
   {
     "id": 95,
     "categoryId": 8,
-    "categoryName": "Personal Care",
     "sku": "PRC011",
     "name": "Safety Razor Blades (10-pack)",
     "description": "High-quality stainless steel double edge blades.",
@@ -1332,7 +1237,6 @@
   {
     "id": 96,
     "categoryId": 8,
-    "categoryName": "Personal Care",
     "sku": "PRC012",
     "name": "Hair Conditioner (Moisture Lock, 500ml)",
     "description": "Deeply hydrating conditioner for soft, manageable hair.",
@@ -1346,7 +1250,6 @@
   {
     "id": 97,
     "categoryId": 9,
-    "categoryName": "Frozen Goods",
     "sku": "FRZ001",
     "name": "Premium Chicken Nuggets (2kg)",
     "description": "Value size pack of quick and easy chicken nuggets.",
@@ -1360,7 +1263,6 @@
   {
     "id": 98,
     "categoryId": 9,
-    "categoryName": "Frozen Goods",
     "sku": "FRZ002",
     "name": "Strawberry Ice Cream (1.5L)",
     "description": "Rich and creamy strawberry-flavored dessert.",
@@ -1374,7 +1276,6 @@
   {
     "id": 99,
     "categoryId": 9,
-    "categoryName": "Frozen Goods",
     "sku": "FRZ003",
     "name": "Stir-Fry Vegetable Mix (1kg)",
     "description": "Convenient bag of mixed vegetables, ready to cook.",
@@ -1388,7 +1289,6 @@
   {
     "id": 100,
     "categoryId": 9,
-    "categoryName": "Frozen Goods",
     "sku": "FRZ004",
     "name": "Frozen Pizza (Pepperoni)",
     "description": "Large frozen pizza, ready to bake.",
@@ -1402,7 +1302,6 @@
   {
     "id": 101,
     "categoryId": 9,
-    "categoryName": "Frozen Goods",
     "sku": "FRZ005",
     "name": "French Fries (Crispy Cut, 1kg)",
     "description": "Classic frozen fries, oven or air fryer ready.",
@@ -1416,7 +1315,6 @@
   {
     "id": 102,
     "categoryId": 9,
-    "categoryName": "Frozen Goods",
     "sku": "FRZ006",
     "name": "Frozen Dumplings (Pork & Cabbage, 50 count)",
     "description": "Quick-cooking Asian dumplings.",
@@ -1430,7 +1328,6 @@
   {
     "id": 103,
     "categoryId": 9,
-    "categoryName": "Frozen Goods",
     "sku": "FRZ007",
     "name": "Frozen Blueberries (500g)",
     "description": "Great for smoothies and baking.",
@@ -1444,7 +1341,6 @@
   {
     "id": 104,
     "categoryId": 9,
-    "categoryName": "Frozen Goods",
     "sku": "FRZ008",
     "name": "Breakfast Waffles (10 count)",
     "description": "Ready-to-toast waffles for a quick breakfast.",
@@ -1458,7 +1354,6 @@
   {
     "id": 105,
     "categoryId": 9,
-    "categoryName": "Frozen Goods",
     "sku": "FRZ009",
     "name": "Frozen Whole Corn (500g)",
     "description": "Sweet whole kernel corn, perfect side dish.",
@@ -1472,7 +1367,6 @@
   {
     "id": 106,
     "categoryId": 9,
-    "categoryName": "Frozen Goods",
     "sku": "FRZ010",
     "name": "Frozen Spring Rolls (Veggie, 15 count)",
     "description": "Crispy spring rolls with a vegetable filling.",
@@ -1486,7 +1380,6 @@
   {
     "id": 107,
     "categoryId": 9,
-    "categoryName": "Frozen Goods",
     "sku": "FRZ011",
     "name": "Frozen Dough Balls (10 count)",
     "description": "Ready-to-bake dough for bread or pizza.",
@@ -1500,7 +1393,6 @@
   {
     "id": 108,
     "categoryId": 9,
-    "categoryName": "Frozen Goods",
     "sku": "FRZ012",
     "name": "Chocolate Fudgesicles (6-pack)",
     "description": "Creamy chocolate frozen treats on a stick.",
@@ -1514,7 +1406,6 @@
   {
     "id": 109,
     "categoryId": 10,
-    "categoryName": "Canned Goods",
     "sku": "CND001",
     "name": "Canned Tuna in Olive Oil (3-pack)",
     "description": "Value pack of high-quality tuna.",
@@ -1528,7 +1419,6 @@
   {
     "id": 110,
     "categoryId": 10,
-    "categoryName": "Canned Goods",
     "sku": "CND002",
     "name": "Baked Beans (Large Can)",
     "description": "Large tin of classic comfort food.",
@@ -1542,7 +1432,6 @@
   {
     "id": 111,
     "categoryId": 10,
-    "categoryName": "Canned Goods",
     "sku": "CND003",
     "name": "Sweet Corn Kernels (Small Can)",
     "description": "Small, single-serve can of sweet corn.",
@@ -1556,7 +1445,6 @@
   {
     "id": 112,
     "categoryId": 10,
-    "categoryName": "Canned Goods",
     "sku": "CND004",
     "name": "Diced Tomatoes (No Salt Added)",
     "description": "Ready-to-use tomatoes for sauces and stews.",
@@ -1570,7 +1458,6 @@
   {
     "id": 113,
     "categoryId": 10,
-    "categoryName": "Canned Goods",
     "sku": "CND005",
     "name": "Black Beans (Low Sodium)",
     "description": "Canned black beans, great source of fiber.",
@@ -1584,7 +1471,6 @@
   {
     "id": 114,
     "categoryId": 10,
-    "categoryName": "Canned Goods",
     "sku": "CND006",
     "name": "Cream of Mushroom Soup (Condensed)",
     "description": "Classic soup, perfect as a base for recipes.",
@@ -1598,7 +1484,6 @@
   {
     "id": 115,
     "categoryId": 10,
-    "categoryName": "Canned Goods",
     "sku": "CND007",
     "name": "Mandarin Orange Slices (Light Syrup)",
     "description": "Sweet citrus fruit slices in a can.",
@@ -1612,7 +1497,6 @@
   {
     "id": 116,
     "categoryId": 10,
-    "categoryName": "Canned Goods",
     "sku": "CND008",
     "name": "Chili with Beans (Hearty)",
     "description": "Ready-to-eat chili, great for a quick meal.",
@@ -1626,7 +1510,6 @@
   {
     "id": 117,
     "categoryId": 10,
-    "categoryName": "Canned Goods",
     "sku": "CND009",
     "name": "Canned Green Beans (Cut)",
     "description": "Pre-cut green beans, ready to heat.",
@@ -1640,7 +1523,6 @@
   {
     "id": 118,
     "categoryId": 10,
-    "categoryName": "Canned Goods",
     "sku": "CND010",
     "name": "Sardines in Tomato Sauce (Single)",
     "description": "Small can of sardines in a rich tomato sauce.",
@@ -1654,7 +1536,6 @@
   {
     "id": 119,
     "categoryId": 10,
-    "categoryName": "Canned Goods",
     "sku": "CND011",
     "name": "Condensed Milk (Sweetened)",
     "description": "Thick, sweet milk for desserts and coffee.",
@@ -1668,7 +1549,6 @@
   {
     "id": 120,
     "categoryId": 10,
-    "categoryName": "Canned Goods",
     "sku": "CND012",
     "name": "Peeled Whole Potatoes",
     "description": "Ready-to-use whole potatoes in water.",

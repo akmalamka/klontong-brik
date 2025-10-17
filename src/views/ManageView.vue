@@ -1,19 +1,26 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
 import ProductForm from '@/components/ProductForm.vue'
 import ProductTable from '@/components/ProductTable.vue'
 import CoreDrawer from '@/core/CoreDrawer.vue'
 import { useDrawerStore } from '@/stores/drawer'
+import { useProductsStore } from '@/stores/products'
 
 const drawerStore = useDrawerStore()
+const productsStore = useProductsStore()
 
 const { mode, currentProduct } = storeToRefs(drawerStore)
+
+onMounted(() => {
+  productsStore.fetchProducts()
+})
 </script>
 
 <template>
   <section class="container flex flex-col items-center justify-center gap-12 pb-16">
     <h1 class="h1">
-      Manage Products
+      Manage
     </h1>
     <ProductTable />
     <CoreDrawer>

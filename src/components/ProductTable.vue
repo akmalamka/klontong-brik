@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { CellContext, ColumnDef, ColumnFiltersState, Table } from '@tanstack/vue-table'
-import type { ProductSummary } from '@/stores/products'
+import type { Product } from '@/stores/products'
 import { FlexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useVueTable } from '@tanstack/vue-table'
 import { storeToRefs } from 'pinia'
 import { computed, h, ref } from 'vue'
@@ -14,7 +14,7 @@ import { valueUpdater } from '@/utils.ts'
 
 const productsStore = useProductsStore()
 const drawerStore = useDrawerStore()
-const { products } = storeToRefs(productsStore)
+const { enrichedProducts } = storeToRefs(productsStore)
 const { deleteProduct, getProductById } = productsStore
 const { openAddProduct, openEditProduct, openViewProduct } = drawerStore
 
@@ -25,13 +25,13 @@ const globalFilter = computed<string>(() => {
   return nameFilter ? nameFilter.value as string : ''
 })
 
-function handleDeleteConfirmed(productId?: number) {
+function handleDeleteConfirmed(productId?: string) {
   if (productId !== undefined) {
     deleteProduct(productId)
   }
 }
 
-function handleViewProduct(productId?: number) {
+function handleViewProduct(productId?: string) {
   if (productId !== undefined) {
     const currentProduct = getProductById(productId)
     if (currentProduct) {
@@ -39,7 +39,7 @@ function handleViewProduct(productId?: number) {
     }
   }
 }
-function handleEditProduct(productId?: number) {
+function handleEditProduct(productId?: string) {
   if (productId !== undefined) {
     const currentProduct = getProductById(productId)
     if (currentProduct) {
@@ -48,17 +48,17 @@ function handleEditProduct(productId?: number) {
   }
 }
 
-const columns: ColumnDef<ProductSummary>[] = [
+const columns: ColumnDef<Product>[] = [
   {
-    accessorKey: 'id',
-    header: 'ID',
-    cell: ({ row }: CellContext<ProductSummary, unknown>) => row.original.id,
+    accessorKey: 'sku',
+    header: 'SKU',
+    cell: ({ row }: CellContext<Product, unknown>) => row.original.sku,
     enableSorting: false,
   },
   {
     accessorKey: 'categoryName',
     header: 'Category',
-    cell: ({ row }: CellContext<ProductSummary, unknown>) => h('div', { class: 'capitalize' }, row.original.categoryName),
+    cell: ({ row }: CellContext<Product, unknown>) => h('div', { class: 'capitalize' }, row.original.categoryName),
     enableSorting: false,
   },
   {
@@ -69,7 +69,7 @@ const columns: ColumnDef<ProductSummary>[] = [
   {
     accessorKey: 'price',
     header: () => h('div', { class: 'text-right' }, 'Price'),
-    cell: ({ row }: CellContext<ProductSummary, unknown>) => {
+    cell: ({ row }: CellContext<Product, unknown>) => {
       const price: number = row.original.price
       const formatted: string = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -85,8 +85,8 @@ const columns: ColumnDef<ProductSummary>[] = [
     enableHiding: false,
     enableSorting: false,
     header: 'Actions',
-    cell: ({ row }: CellContext<ProductSummary, unknown>) => {
-      const product: ProductSummary = row.original
+    cell: ({ row }: CellContext<Product, unknown>) => {
+      const product: Product = row.original
 
       const deleteButton = h(CoreButton, {
         class: 'bg-error color-white',
@@ -100,21 +100,21 @@ const columns: ColumnDef<ProductSummary>[] = [
         'description': `This action will remove ${product.name} from your inventory. You won’t be able to undo this action.`,
         'cancel-text': 'Cancel',
         'apply-text': 'Delete product',
-        'onApply': () => handleDeleteConfirmed(product.id),
+        'onApply': () => handleDeleteConfirmed(product._id),
       }, {
         default: () => deleteButton,
       })
       return h('div', { class: 'flex gap-2' }, [
-        h(CoreButton, { onClick: () => handleViewProduct(product.id) }, () => 'View'),
-        h(CoreButton, { class: 'bg-info color-white', onClick: () => handleEditProduct(product.id) }, () => [h('i', { class: 'i-lucide:edit' }), 'Edit']),
+        h(CoreButton, { onClick: () => handleViewProduct(product._id) }, () => 'View'),
+        h(CoreButton, { class: 'bg-info color-white', onClick: () => handleEditProduct(product._id) }, () => [h('i', { class: 'i-lucide:edit' }), 'Edit']),
         deleteAlert,
       ])
     },
   },
 ]
 
-const table: Table<ProductSummary> = useVueTable({
-  data: products,
+const table: Table<Product> = useVueTable({
+  data: enrichedProducts,
   columns,
   // Feature Models
   getCoreRowModel: getCoreRowModel(),
@@ -141,7 +141,7 @@ function updateSearchTerm(value: string | number | null): void {
       <CoreSearchBar
         :model-value="globalFilter"
         :debounce-time="400"
-        placeholder="Search product name..."
+        placeholder="Search product..."
         class="w-1/2"
         @update:model-value="updateSearchTerm"
       />
