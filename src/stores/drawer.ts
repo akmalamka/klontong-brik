@@ -2,7 +2,7 @@ import type { EnrichedProduct } from './products'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
-type DrawerMode = 'closed' | 'add' | 'edit' | 'view'
+type DrawerMode = 'closed' | 'add' | 'edit' | 'view' | 'opened'
 
 export const useDrawerStore = defineStore('drawer', () => {
   const mode = ref<DrawerMode>('closed')
@@ -16,6 +16,10 @@ export const useDrawerStore = defineStore('drawer', () => {
   const drawerMode = computed(() => mode.value)
 
   // --- Actions ---
+  function openDrawer() {
+    mode.value = 'opened'
+    drawerTitle.value = 'Klontong'
+  }
   function openAddProduct(): void {
     mode.value = 'add'
     drawerTitle.value = 'Add New Product'
@@ -46,6 +50,7 @@ export const useDrawerStore = defineStore('drawer', () => {
     currentProduct,
     isOpen,
     drawerMode,
+    openDrawer,
     openAddProduct,
     openEditProduct,
     openViewProduct,

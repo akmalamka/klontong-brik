@@ -23,7 +23,7 @@ onMounted(() => {
       Manage
     </h1>
     <ProductTable />
-    <CoreDrawer>
+    <CoreDrawer v-if="mode !== 'opened'">
       <div v-if="mode === 'add'">
         <ProductForm />
       </div>

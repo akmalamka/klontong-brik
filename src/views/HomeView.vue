@@ -9,8 +9,6 @@ const user = useCurrentUser()
   <!-- TODO; 404 page -->
   <section class="container relative h-full flex flex-col items-center justify-center gap-6 text-center color-white">
     <div class="background-radial-blur" />
-    {{ user?.email }}
-
     <h1 class="h1">
       {{ user ? 'Welcome back! 👋' : 'Simplify your food inventory' }}
     </h1>
