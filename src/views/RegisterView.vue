@@ -55,7 +55,7 @@ const onSubmit = handleSubmit(async ({ email, password }) => {
     <h1 class="h4">
       Sign up for an account
     </h1>
-    <form class="flex flex-col gap-4 w-full min-w-[500px]" @submit.prevent="onSubmit">
+    <form class="flex flex-col gap-4 w-full md:min-w-[500px]" @submit.prevent="onSubmit">
       <div>
         <label for="email" class="body-text">Email</label>
         <CoreInputField
