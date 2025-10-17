@@ -1,4 +1,4 @@
-import { defineConfig, presetWebFonts, presetWind3, transformerDirectives, transformerVariantGroup } from 'unocss'
+import { defineConfig, presetIcons, presetWebFonts, presetWind3, transformerDirectives, transformerVariantGroup } from 'unocss'
 
 export default defineConfig({
   theme: {
@@ -28,8 +28,8 @@ export default defineConfig({
     ['h5', 'font-sans text-[16px] leading-[1.3] font-500'],
 
     ['body-text', 'font-sans text-[16px] leading-[1.5] font-500'],
-    ['body-text-small', 'font-sans text-[16px] leading-[1.5]'],
-    ['caption', 'font-sans text-[12px] leading-[1.4] uppercase tracking-[0.025em]'],
+    ['body-text-sm', 'font-sans text-[16px] leading-[1.5]'],
+    ['caption', 'font-sans text-[12px] leading-[1.4] tracking-[0.025em]'],
 
     ['btn-text', 'font-sans text-[16px] leading-[1.2] tracking-[0.01em] font-600'],
     ['btn-text-small', 'font-sans text-[14px] leading-[1.2] tracking[-0.05em] font-500'],
@@ -45,6 +45,14 @@ export default defineConfig({
         display: 'Clash Display',
         sans: 'Clash Grotesk',
       },
+    }),
+    presetIcons({
+      extraProperties: {
+        'display': 'inline-block',
+        'vertical-align': 'middle',
+      },
+      scale: 1.25,
+      warn: true,
     }),
   ],
   transformers: [

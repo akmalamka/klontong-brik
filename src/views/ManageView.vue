@@ -1,9 +1,64 @@
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
+import ProductForm from '@/components/ProductForm.vue'
+import ProductTable from '@/components/ProductTable.vue'
+import CoreDrawer from '@/core/CoreDrawer.vue'
+import { useDrawerStore } from '@/stores/drawer'
+import { useProductsStore } from '@/stores/products'
 
+const drawerStore = useDrawerStore()
+const productsStore = useProductsStore()
+
+const { mode, currentProduct } = storeToRefs(drawerStore)
+
+onMounted(() => {
+  productsStore.fetchProducts()
+})
 </script>
 
 <template>
-  <h1>Hello Manage!</h1>
+  <section class="container flex flex-col items-center justify-center gap-12 pb-16">
+    <h1 class="h1">
+      Manage
+    </h1>
+    <ProductTable />
+    <CoreDrawer v-if="mode !== 'opened'">
+      <div v-if="mode === 'add'">
+        <ProductForm />
+      </div>
+      <div v-else-if="mode === 'view' && currentProduct" class="flex flex-col gap-4">
+        <img :src="currentProduct.image" alt="Product Image" class="max-w-[200px] h-auto rounded-4">
+        <h1 class="h2">
+          {{ currentProduct.name }}
+        </h1>
+        <div class="caption py-1 px-2 bg-[#414142] rounded-4 w-fit color-white">
+          {{ currentProduct.categoryName }}
+        </div>
+        <span class="h3">
+          IDR {{ currentProduct.price.toLocaleString() }}
+        </span>
+        <div>
+          <span class="h4">Description</span>
+          <p class="body-text-sm">
+            {{ currentProduct.description }}
+          </p>
+        </div>
+        <div>
+          <span class="h4">Details</span>
+          <ul class="list-disc list-inside body-text-sm">
+            <li>Weight: {{ currentProduct.weight }} grams</li>
+            <li>Length: {{ currentProduct.length }} cm</li>
+            <li>Height: {{ currentProduct.height }} cm</li>
+            <li>Width: {{ currentProduct.width }} cm</li>
+          </ul>
+        </div>
+      </div>
+      <div v-else-if="mode === 'edit' && currentProduct">
+        <ProductForm :data="currentProduct" />
+      </div>
+    </CoreDrawer>
+  </section>
 </template>
 
 <style lang="postcss" scoped>

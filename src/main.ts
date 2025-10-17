@@ -1,10 +1,32 @@
+import { createPinia } from 'pinia'
 import { createApp } from 'vue'
+import { getCurrentUser, VueFire, VueFireAuth } from 'vuefire'
+import { firebaseApp } from '@/firebase'
 import App from './App.vue'
-import { router } from './router'
+import { setupRouter } from './router'
+import localStoragePlugin from './utils.ts/plugins'
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 import './styles.css'
 
-const app = createApp(App)
-app.use(router)
-app.mount('#app')
+(async () => {
+  const pinia = createPinia()
+  pinia.use(localStoragePlugin)
+
+  const app = createApp(App)
+
+  app.use(VueFire, {
+    firebaseApp,
+    modules: [VueFireAuth()],
+  })
+
+  // We need this to make sure we get the user before app mounted
+  await getCurrentUser()
+
+  // Init Router
+  await setupRouter(app)
+  app.use(pinia)
+
+  // mount app
+  app.mount('#app')
+})()

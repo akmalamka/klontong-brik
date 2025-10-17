@@ -1,18 +1,24 @@
 <script lang="ts" setup>
+import { useCurrentUser } from 'vuefire'
 import CoreButton from '@/core/CoreButton.vue'
+
+const user = useCurrentUser()
 </script>
 
 <template>
+  <!-- TODO; 404 page -->
   <section class="container relative h-full flex flex-col items-center justify-center gap-6 text-center color-white">
     <div class="background-radial-blur" />
-
     <h1 class="h1">
-      Simplify your food inventory
+      {{ user ? 'Welcome back! 👋' : 'Simplify your food inventory' }}
     </h1>
     <p class="body-text">
-      Track, organize, and manage ingredients effortlessly — all in one dashboard.
+      {{ user ? 'Easily manage and track your food inventory from one place.' : 'Track, organize, and manage ingredients effortlessly — all in one dashboard.' }}
     </p>
-    <CoreButton to="/login">
+    <CoreButton v-if="user" to="/manage">
+      Manage Products
+    </CoreButton>
+    <CoreButton v-else to="/login">
       Get Started
     </CoreButton>
   </section>
