@@ -46,12 +46,17 @@ export const useProductsStore = defineStore('products', () => {
 
   /** Updates an existing product. */
   function editProduct(updatedProduct: Product) {
-    const index = products.value.findIndex(p => p.id === updatedProduct.id)
+    products.value = products.value.map((p) => {
+    // If the IDs match, return the updated product.
+      if (p.id === updatedProduct.id) {
+        return updatedProduct
+      }
+      // Otherwise, return the original product object.
+      return p
+    })
 
-    if (index !== -1) {
-      products.value.splice(index, 1, updatedProduct)
-    }
-    else {
+    const wasUpdated = products.value.some(p => p.id === updatedProduct.id)
+    if (!wasUpdated) {
       console.warn(`Product with ID ${updatedProduct.id} not found for editing.`)
     }
   }

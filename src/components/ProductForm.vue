@@ -32,7 +32,7 @@ const categories: Category[] = [
 ]
 
 const schema = yup.object({
-  category: yup
+  categoryId: yup
     .number()
     .oneOf(categories.map(c => c.categoryId), 'Invalid category selected')
     .required('Category is required'),
@@ -79,8 +79,7 @@ const schema = yup.object({
 const initialValues = computed(() => {
   // Use the default values
   const defaults = {
-    // Note: The category should use the categoryId for the select field
-    category: undefined as number | undefined,
+    categoryId: undefined as number | undefined,
     name: '',
     description: '',
     image: '',
@@ -95,7 +94,7 @@ const initialValues = computed(() => {
   // If the prop data exists, use its values
   if (data) {
     return {
-      category: data.categoryId, // Map categoryId from product data to the 'category' form field
+      categoryId: data.categoryId,
       name: data.name,
       description: data.description || '', // Use '' if description is null/undefined
       image: data.image,
@@ -118,7 +117,7 @@ const { handleSubmit, errors, isSubmitting, resetForm } = useForm({
 })
 
 // Define all fields for v-model binding
-const { value: category } = useField<number | undefined>('category')
+const { value: categoryId } = useField<number | undefined>('categoryId')
 const { value: name } = useField<string>('name')
 const { value: description } = useField<string>('description')
 const { value: image } = useField<string>('image')
@@ -134,38 +133,53 @@ const successMessage = ref('')
 
 const productsStore = useProductsStore()
 const drawerStore = useDrawerStore()
-const { addProduct } = productsStore
+const { addProduct, editProduct } = productsStore
 const { closeDrawer } = drawerStore
+
+const buttonText = computed(() => {
+  if (isSubmitting.value) {
+    return 'Saving Product...'
+  }
+  else {
+    if (data) {
+      return 'Save Changes'
+    }
+    else {
+      return 'Add Product'
+    }
+  }
+})
 
 const onSubmit = handleSubmit(async (values) => {
   formError.value = ''
   successMessage.value = ''
 
-  const selectedCategory = categories.find(c => c.categoryId === values.category)
+  const selectedCategory = categories.find(c => c.categoryId === values.categoryId)
   if (!selectedCategory) {
     formError.value = 'Invalid category selected. Please refresh and try again.'
     return
   }
 
-  // Here you would replace the setTimeout with your actual API call
-  // console.log('Product Data to Submit:', values)
-
-  const { category, ...rest } = values
-
   const productData = {
-    ...rest,
-    categoryId: selectedCategory.categoryId,
-    categoryName: selectedCategory.categoryName,
+    ...values,
+    ...selectedCategory,
   }
 
   try {
-    addProduct(productData)
+    // Real API call here
+    // If data exist then edit mode
+    if (data) {
+      editProduct({ id: data.id, ...productData })
+    }
+    else { // else add mode
+      addProduct(productData)
+    }
 
     await new Promise(resolve => setTimeout(resolve, 500))
 
     successMessage.value = `Successfully added product: ${productData.name}`
-    resetForm() // Clear the form fields after success
     closeDrawer()
+    resetForm() // Clear the form fields after success
   }
   catch (err: any) {
     console.error('Submission Error:', err)
@@ -181,9 +195,9 @@ const onSubmit = handleSubmit(async (values) => {
         <label for="category" class="body-text block mb-1 font-medium">Category</label>
         <select
           id="category"
-          v-model="category"
+          v-model="categoryId"
           class="w-full p-2 border rounded-lg focus:ring focus:ring-blue-200"
-          :class="{ 'border-error': errors.category }"
+          :class="{ 'border-error': errors.categoryId }"
         >
           <option value="" disabled>
             Select a category
@@ -192,8 +206,8 @@ const onSubmit = handleSubmit(async (values) => {
             {{ cat.categoryName }}
           </option>
         </select>
-        <p v-if="errors.category" class="text-error text-sm mt-1">
-          {{ errors.category }}
+        <p v-if="errors.categoryId" class="text-error text-sm mt-1">
+          {{ errors.categoryId }}
         </p>
       </div>
 
@@ -347,7 +361,7 @@ const onSubmit = handleSubmit(async (values) => {
         :disabled="isSubmitting"
         class="w-full py-3 mt-4 rounded-lg bg-black text-white hover:bg-gray-800 transition disabled:bg-gray-400"
       >
-        {{ isSubmitting ? 'Saving Product...' : 'Add Product' }}
+        {{ buttonText }}
       </CoreButton>
     </form>
   </div>
