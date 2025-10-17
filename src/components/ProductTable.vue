@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { CellContext, ColumnDef, ColumnFiltersState, Table } from '@tanstack/vue-table'
-import type { Product } from '@/stores/products'
+import type { EnrichedProduct } from '@/stores/products'
 import { FlexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useVueTable } from '@tanstack/vue-table'
 import { storeToRefs } from 'pinia'
 import { computed, h, ref } from 'vue'
@@ -10,10 +10,12 @@ import CoreSearchBar from '@/core/CoreSearchBar.vue'
 import { CoreTable, CoreTableBody, CoreTableCell, CoreTableHead, CoreTableHeader, CoreTableRow } from '@/core/table'
 import { useDrawerStore } from '@/stores/drawer'
 import { useProductsStore } from '@/stores/products'
+import { useToastStore } from '@/stores/toast'
 import { valueUpdater } from '@/utils.ts'
 
 const productsStore = useProductsStore()
 const drawerStore = useDrawerStore()
+const toastStore = useToastStore()
 const { enrichedProducts } = storeToRefs(productsStore)
 const { deleteProduct, getProductById } = productsStore
 const { openAddProduct, openEditProduct, openViewProduct } = drawerStore
@@ -25,9 +27,17 @@ const globalFilter = computed<string>(() => {
   return nameFilter ? nameFilter.value as string : ''
 })
 
-function handleDeleteConfirmed(productId?: string) {
+async function handleDeleteConfirmed(productId: string, productName: string) {
   if (productId !== undefined) {
-    deleteProduct(productId)
+    try {
+      await deleteProduct(productId)
+
+      toastStore.showToast('Deletion Successful', `"${productName}" has been deleted.`, 'success')
+    }
+    catch (err: any) {
+      console.error(err)
+      toastStore.showToast('Action Failed', 'Something went wrong, please try again.', 'error')
+    }
   }
 }
 
@@ -48,17 +58,17 @@ function handleEditProduct(productId?: string) {
   }
 }
 
-const columns: ColumnDef<Product>[] = [
+const columns: ColumnDef<EnrichedProduct>[] = [
   {
     accessorKey: 'sku',
     header: 'SKU',
-    cell: ({ row }: CellContext<Product, unknown>) => row.original.sku,
+    cell: ({ row }: CellContext<EnrichedProduct, unknown>) => row.original.sku,
     enableSorting: false,
   },
   {
     accessorKey: 'categoryName',
     header: 'Category',
-    cell: ({ row }: CellContext<Product, unknown>) => h('div', { class: 'capitalize' }, row.original.categoryName),
+    cell: ({ row }: CellContext<EnrichedProduct, unknown>) => h('div', { class: 'capitalize' }, row.original.categoryName),
     enableSorting: false,
   },
   {
@@ -69,7 +79,7 @@ const columns: ColumnDef<Product>[] = [
   {
     accessorKey: 'price',
     header: () => h('div', { class: 'text-right' }, 'Price'),
-    cell: ({ row }: CellContext<Product, unknown>) => {
+    cell: ({ row }: CellContext<EnrichedProduct, unknown>) => {
       const price: number = row.original.price
       const formatted: string = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -85,8 +95,8 @@ const columns: ColumnDef<Product>[] = [
     enableHiding: false,
     enableSorting: false,
     header: 'Actions',
-    cell: ({ row }: CellContext<Product, unknown>) => {
-      const product: Product = row.original
+    cell: ({ row }: CellContext<EnrichedProduct, unknown>) => {
+      const product: EnrichedProduct = row.original
 
       const deleteButton = h(CoreButton, {
         class: 'bg-error color-white',
@@ -100,7 +110,7 @@ const columns: ColumnDef<Product>[] = [
         'description': `This action will remove ${product.name} from your inventory. You won’t be able to undo this action.`,
         'cancel-text': 'Cancel',
         'apply-text': 'Delete product',
-        'onApply': () => handleDeleteConfirmed(product._id),
+        'onApply': () => handleDeleteConfirmed(product._id, product.name),
       }, {
         default: () => deleteButton,
       })
@@ -113,7 +123,7 @@ const columns: ColumnDef<Product>[] = [
   },
 ]
 
-const table: Table<Product> = useVueTable({
+const table: Table<EnrichedProduct> = useVueTable({
   data: enrichedProducts,
   columns,
   // Feature Models

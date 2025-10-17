@@ -1,40 +1,34 @@
 <script setup lang="ts">
 import type { Product } from '@/stores/products'
+import { storeToRefs } from 'pinia'
 import { useField, useForm } from 'vee-validate'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import * as yup from 'yup'
 import CoreButton from '@/core/CoreButton.vue'
 import CoreInputField from '@/core/CoreInputField.vue'
+import { useCategoryStore } from '@/stores/categories'
 import { useDrawerStore } from '@/stores/drawer'
 import { useProductsStore } from '@/stores/products'
+import { useToastStore } from '@/stores/toast'
 
 interface Props {
   data?: Product
 }
 const { data } = defineProps<Props>()
 
-interface Category {
-  categoryId: number
-  categoryName: string
-}
+const productsStore = useProductsStore()
+const drawerStore = useDrawerStore()
+const toastStore = useToastStore()
+const categoryStore = useCategoryStore()
 
-const categories: Category[] = [
-  { categoryId: 1, categoryName: 'Snacks' },
-  { categoryId: 2, categoryName: 'Beverages' },
-  { categoryId: 3, categoryName: 'Dairy & Eggs' },
-  { categoryId: 4, categoryName: 'Produce' },
-  { categoryId: 5, categoryName: 'Meats & Seafood' },
-  { categoryId: 6, categoryName: 'Bakery' },
-  { categoryId: 7, categoryName: 'Household' },
-  { categoryId: 8, categoryName: 'Personal Care' },
-  { categoryId: 9, categoryName: 'Frozen Goods' },
-  { categoryId: 10, categoryName: 'Canned Goods' },
-]
+const { addProduct, editProduct } = productsStore
+const { closeDrawer } = drawerStore
+const { categories } = storeToRefs(categoryStore)
 
 const schema = yup.object({
   categoryId: yup
     .number()
-    .oneOf(categories.map(c => c.categoryId), 'Invalid category selected')
+    .oneOf(categories.value.map(c => c.categoryId), 'Invalid category selected')
     .required('Category is required'),
   name: yup
     .string()
@@ -116,7 +110,6 @@ const { handleSubmit, errors, isSubmitting, resetForm } = useForm({
   initialValues: initialValues.value,
 })
 
-// Define all fields for v-model binding
 const { value: categoryId } = useField<number | undefined>('categoryId')
 const { value: name } = useField<string>('name')
 const { value: description } = useField<string>('description')
@@ -127,14 +120,6 @@ const { value: width } = useField<number>('width')
 const { value: length } = useField<number>('length')
 const { value: height } = useField<number>('height')
 const { value: price } = useField<number>('price')
-
-const formError = ref('')
-const successMessage = ref('')
-
-const productsStore = useProductsStore()
-const drawerStore = useDrawerStore()
-const { addProduct, editProduct } = productsStore
-const { closeDrawer } = drawerStore
 
 const buttonText = computed(() => {
   if (isSubmitting.value) {
@@ -151,36 +136,31 @@ const buttonText = computed(() => {
 })
 
 const onSubmit = handleSubmit(async (values) => {
-  formError.value = ''
-  successMessage.value = ''
-
-  const selectedCategory = categories.find(c => c.categoryId === values.categoryId)
-  if (!selectedCategory) {
-    formError.value = 'Invalid category selected. Please refresh and try again.'
-    return
-  }
-
-  const productData = {
-    ...values,
-    ...selectedCategory,
-  }
+  const selectedCategory = categories.value.find(c => c.categoryId === values.categoryId)
 
   try {
-    // Real API call here
-    // If data exist then edit mode
+    const productName = values.name
+    const productData = {
+      ...values,
+      ...selectedCategory,
+    }
+
     if (data) {
-      editProduct({ _id: data._id, ...productData })
+      await editProduct({ _id: data._id, ...productData })
+
+      toastStore.showToast('Update Successful', `Product "${productName}" was successfully updated.`, 'success')
     }
     else { // else add mode
-      addProduct(productData)
+      await addProduct(productData)
+
+      toastStore.showToast('Creation Successful', `New product "${productName}" has been added.`, 'success')
     }
-    successMessage.value = `Successfully added product: ${productData.name}`
     closeDrawer()
     resetForm() // Clear the form fields after success
   }
   catch (err: any) {
-    console.error('Submission Error:', err)
-    formError.value = 'Failed to save product. Please check your connection and try again.'
+    console.error(err)
+    toastStore.showToast('Action Failed', 'Something went wrong, please try again.', 'error')
   }
 })
 </script>
@@ -281,7 +261,7 @@ const onSubmit = handleSubmit(async (values) => {
         </div>
 
         <div>
-          <label for="weight" class="body-text block mb-1 font-medium">Weight (kg)</label>
+          <label for="weight" class="body-text block mb-1 font-medium">Weight (gr)</label>
           <CoreInputField
             id="weight"
             v-model.number="weight"
@@ -345,13 +325,6 @@ const onSubmit = handleSubmit(async (values) => {
           </p>
         </div>
       </div>
-
-      <p v-if="formError" class="text-error text-sm mt-3">
-        {{ formError }}
-      </p>
-      <p v-if="successMessage" class="text-green-500 text-sm mt-3 font-medium">
-        {{ successMessage }} 🎉
-      </p>
 
       <CoreButton
         type="submit"

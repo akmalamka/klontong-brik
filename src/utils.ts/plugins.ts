@@ -3,6 +3,7 @@ import type { PiniaPluginContext } from 'pinia'
 const STORAGE_PREFIX = 'pinia_'
 
 function localStoragePlugin({ store }: PiniaPluginContext) {
+  // TODO: store form value as well to make sure that when user change the data the state persist
   const storageKey = STORAGE_PREFIX + store.$id
 
   let storedState = null

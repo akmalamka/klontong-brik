@@ -6,7 +6,7 @@ import { useCategoryStore } from './categories'
 
 export interface Product {
   _id: string
-  categoryId: number
+  categoryId: number | undefined
   image: string
   sku: string
   name: string
@@ -34,7 +34,7 @@ export const useProductsStore = defineStore('products', () => {
   const enrichedProducts = computed<EnrichedProduct[]>(() => {
     return products.value.map(product => ({
       ...product,
-      categoryName: categoryStore.getCategoryName(product.categoryId),
+      categoryName: categoryStore.getCategoryName(product.categoryId ?? -1),
     }))
   })
 

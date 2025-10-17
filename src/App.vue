@@ -4,6 +4,7 @@ import { computed } from 'vue'
 import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
 import { useCurrentUser } from 'vuefire'
 import CoreButton from './core/CoreButton.vue'
+import CoreToast from './core/CoreToast.vue'
 import { auth } from './firebase'
 
 const route = useRoute()
@@ -52,4 +53,5 @@ async function handleLogout() {
   >
     <RouterView />
   </main>
+  <CoreToast />
 </template>

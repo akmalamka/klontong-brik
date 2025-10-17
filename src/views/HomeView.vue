@@ -6,6 +6,7 @@ const user = useCurrentUser()
 </script>
 
 <template>
+  <!-- TODO; 404 page -->
   <section class="container relative h-full flex flex-col items-center justify-center gap-6 text-center color-white">
     <div class="background-radial-blur" />
     {{ user?.email }}
