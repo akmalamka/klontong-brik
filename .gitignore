@@ -24,7 +24,6 @@ dist-ssr
 *.sw?
 
 # Firebase local dev
-/firebase-export-metadata.json
 .firebase
 
 # Local env files

@@ -37,7 +37,7 @@ const onSubmit = handleSubmit(async ({ email, password }) => {
     await createUserWithEmailAndPassword(auth, email, password)
 
     // redirect after success
-    router.push('/')
+    router.push('/login')
   }
   catch (err: any) {
     if (err instanceof FirebaseError && err.code === 'auth/email-already-in-use') {
