@@ -1,10 +1,17 @@
 <script setup lang="ts">
+import type { Product } from '@/stores/products'
 import { useField, useForm } from 'vee-validate'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import * as yup from 'yup'
 import CoreButton from '@/core/CoreButton.vue'
 import CoreInputField from '@/core/CoreInputField.vue'
+import { useDrawerStore } from '@/stores/drawer'
 import { useProductsStore } from '@/stores/products'
+
+interface Props {
+  data?: Product
+}
+const { data } = defineProps<Props>()
 
 interface Category {
   categoryId: number
@@ -69,20 +76,45 @@ const schema = yup.object({
     .min(0.01, 'Price must be greater than 0'),
 })
 
-const { handleSubmit, errors, isSubmitting, resetForm } = useForm({
-  validationSchema: schema,
-  initialValues: {
-    category: undefined, // undefined for number fields
+const initialValues = computed(() => {
+  // Use the default values
+  const defaults = {
+    // Note: The category should use the categoryId for the select field
+    category: undefined as number | undefined,
     name: '',
     description: '',
     image: '',
     sku: '',
-    weight: undefined,
-    width: undefined,
-    length: undefined,
-    height: undefined,
+    weight: 0,
+    width: 0,
+    length: 0,
+    height: 0,
     price: 0,
-  },
+  }
+
+  // If the prop data exists, use its values
+  if (data) {
+    return {
+      category: data.categoryId, // Map categoryId from product data to the 'category' form field
+      name: data.name,
+      description: data.description || '', // Use '' if description is null/undefined
+      image: data.image,
+      sku: data.sku,
+      weight: data.weight || 0,
+      width: data.width || 0,
+      length: data.length || 0,
+      height: data.height || 0,
+      price: data.price,
+    }
+  }
+
+  // Otherwise, return the defaults
+  return defaults
+})
+
+const { handleSubmit, errors, isSubmitting, resetForm } = useForm({
+  validationSchema: schema,
+  initialValues: initialValues.value,
 })
 
 // Define all fields for v-model binding
@@ -91,19 +123,20 @@ const { value: name } = useField<string>('name')
 const { value: description } = useField<string>('description')
 const { value: image } = useField<string>('image')
 const { value: sku } = useField<string>('sku')
-const { value: weight } = useField<number | undefined>('weight')
-const { value: width } = useField<number | undefined>('width')
-const { value: length } = useField<number | undefined>('length')
-const { value: height } = useField<number | undefined>('height')
+const { value: weight } = useField<number>('weight')
+const { value: width } = useField<number>('width')
+const { value: length } = useField<number>('length')
+const { value: height } = useField<number>('height')
 const { value: price } = useField<number>('price')
 
 const formError = ref('')
 const successMessage = ref('')
 
 const productsStore = useProductsStore()
+const drawerStore = useDrawerStore()
 const { addProduct } = productsStore
+const { closeDrawer } = drawerStore
 
-// --- 4. Submission Handler ---
 const onSubmit = handleSubmit(async (values) => {
   formError.value = ''
   successMessage.value = ''
@@ -126,19 +159,15 @@ const onSubmit = handleSubmit(async (values) => {
   }
 
   try {
-    // 1. Call the store action
-
     addProduct(productData)
 
-    // 2. Add a small artificial delay to show 'Logging in...' state (optional but good practice)
     await new Promise(resolve => setTimeout(resolve, 500))
 
-    // 3. Handle success
     successMessage.value = `Successfully added product: ${productData.name}`
     resetForm() // Clear the form fields after success
+    closeDrawer()
   }
   catch (err: any) {
-    // Handle any potential errors from the addProduct function (e.g., store validation)
     console.error('Submission Error:', err)
     formError.value = 'Failed to save product. Please check your connection and try again.'
   }
@@ -147,9 +176,6 @@ const onSubmit = handleSubmit(async (values) => {
 
 <template>
   <div class="p-8 max-w-4xl mx-auto">
-    <h1 class="text-2xl font-bold mb-6">
-      Add New Product
-    </h1>
     <form class="flex flex-col gap-6 w-full" @submit.prevent="onSubmit">
       <div>
         <label for="category" class="body-text block mb-1 font-medium">Category</label>

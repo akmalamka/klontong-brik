@@ -10,10 +10,10 @@ export interface Product {
   sku: string
   name: string
   description: string
-  weight?: number
-  width?: number
-  length?: number
-  height?: number
+  weight: number
+  width: number
+  length: number
+  height: number
   price: number
 }
 

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
+import ProductForm from '@/components/ProductForm.vue'
+import ProductTable from '@/components/ProductTable.vue'
+import CoreDrawer from '@/core/CoreDrawer.vue'
 import { useDrawerStore } from '@/stores/drawer'
-import DrawerView from './DrawerView.vue'
-import ProductFormView from './ProductFormView.vue'
-import TableView from './TableView.vue'
 
 const drawerStore = useDrawerStore()
 
@@ -15,12 +15,12 @@ const { mode, currentProduct } = storeToRefs(drawerStore)
     <h1 class="h1">
       Manage Products
     </h1>
-    <TableView />
-    <DrawerView>
+    <ProductTable />
+    <CoreDrawer>
       <div v-if="mode === 'add'">
-        <ProductFormView />
+        <ProductForm />
       </div>
-      <div v-if="mode === 'view' && currentProduct" class="flex flex-col gap-4">
+      <div v-else-if="mode === 'view' && currentProduct" class="flex flex-col gap-4">
         <img :src="currentProduct.image" alt="Product Image" class="max-w-[200px] h-auto rounded-4">
         <h1 class="h2">
           {{ currentProduct.name }}
@@ -47,10 +47,10 @@ const { mode, currentProduct } = storeToRefs(drawerStore)
           </ul>
         </div>
       </div>
-      <div v-else-if="mode === 'edit'">
-        Edit product
+      <div v-else-if="mode === 'edit' && currentProduct">
+        <ProductForm :data="currentProduct" />
       </div>
-    </DrawerView>
+    </CoreDrawer>
   </section>
 </template>
 

@@ -16,7 +16,7 @@ const productsStore = useProductsStore()
 const drawerStore = useDrawerStore()
 const { products } = storeToRefs(productsStore)
 const { deleteProduct, getProductById } = productsStore
-const { openAddProduct } = drawerStore
+const { openAddProduct, openEditProduct, openViewProduct } = drawerStore
 
 const columnFilters = ref<ColumnFiltersState>([])
 
@@ -35,7 +35,7 @@ function handleViewProduct(productId?: number) {
   if (productId !== undefined) {
     const currentProduct = getProductById(productId)
     if (currentProduct) {
-      drawerStore.openViewProduct(currentProduct)
+      openViewProduct(currentProduct)
     }
   }
 }
@@ -43,7 +43,7 @@ function handleEditProduct(productId?: number) {
   if (productId !== undefined) {
     const currentProduct = getProductById(productId)
     if (currentProduct) {
-      drawerStore.openEditProduct(currentProduct)
+      openEditProduct(currentProduct)
     }
   }
 }
@@ -106,7 +106,7 @@ const columns: ColumnDef<ProductSummary>[] = [
       })
       return h('div', { class: 'flex gap-2' }, [
         h(CoreButton, { onClick: () => handleViewProduct(product.id) }, () => 'View'),
-        h(CoreButton, { class: 'bg-info color-white', onClick: () => handleEditProduct(product.id) }, () => ['Edit']),
+        h(CoreButton, { class: 'bg-info color-white', onClick: () => handleEditProduct(product.id) }, () => [h('i', { class: 'i-lucide:edit' }), 'Edit']),
         deleteAlert,
       ])
     },

@@ -9,7 +9,6 @@ const drawerStore = useDrawerStore()
 const { drawerTitle } = storeToRefs(drawerStore)
 
 function handleOpenChange(newOpenState: boolean) {
-  // Update your store's state to match the drawer's requested new state
   if (!newOpenState) {
     drawerStore.closeDrawer()
   }
@@ -36,8 +35,10 @@ function handleOpenChange(newOpenState: boolean) {
         </VisuallyHidden>
 
         <DrawerTitle>
-          <div class="flex items-center justify-between px-4 py-5 md:(gap-x-4 body-text)">
-            {{ drawerTitle }}
+          <div class="flex items-center justify-between px-13 py-5 md:(gap-x-4 body-text)">
+            <h2 class="h4">
+              {{ drawerTitle }}
+            </h2>
             <DrawerClose class="w-10 h-10 flex justify-center items-center rounded-full bg-black color-white">
               <i
                 class="i-lucide:x"
