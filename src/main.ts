@@ -4,12 +4,15 @@ import { getCurrentUser, VueFire, VueFireAuth } from 'vuefire'
 import { firebaseApp } from '@/firebase'
 import App from './App.vue'
 import { setupRouter } from './router'
+import localStoragePlugin from './utils.ts/plugins'
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 import './styles.css'
 
 (async () => {
   const pinia = createPinia()
+  pinia.use(localStoragePlugin)
+
   const app = createApp(App)
 
   app.use(VueFire, {
